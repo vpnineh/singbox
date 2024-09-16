@@ -163,8 +163,9 @@
       "type": "vless",
       "tag": "1",
       "server": "www.gov.ua",
+      "server": "ip.sb",
       "server_port": 8080,
-      "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
+      "uuid": "b6cdbcb4-fccd-4237-b055-345a06eaa08e",
       "tls": {
         "enabled": false
       },
@@ -172,7 +173,8 @@
         "type": "ws",
         "path": "/?ed=2048",
         "headers": {
-          "host": "feng6.4m-bq2ce.workers.dev"
+          "host": "302.j4tccyw7.workers.dev"
+        }
         }
       }
     },
