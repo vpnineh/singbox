@@ -140,7 +140,8 @@
 			"outbounds": [
 				"Best Latency",
                         "1",
-        "5"
+        "2",
+"3"
 			]
 		},
 		{
@@ -148,7 +149,8 @@
 			"tag": "Best Latency",
 			"outbounds": [
                         "1",
-        "5"
+        "2",
+"3"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -174,7 +176,7 @@
     },
     {
       "type": "vless",
-      "tag": "5",
+      "tag": "2",
       "server": "ip.sb",
       "server_port": 8080,
       "uuid": "b6cdbcb4-fccd-4237-b055-345a06eaa08e",
@@ -186,6 +188,23 @@
         "path": "/?ed=2048",
         "headers": {
           "host": "302.j4tccyw7.workers.dev"
+        }
+      }
+    },
+{
+      "type": "vless",
+      "tag": "3",
+      "server": "www.gov.ua",
+      "server_port": 8080,
+      "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "feng6.4m-bq2ce.workers.dev"
         }
       }
     },
