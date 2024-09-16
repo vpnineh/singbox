@@ -154,7 +154,7 @@
         "2",
 "3"
 			],
-			"url": "http://www.google.com/generate_204",
+			"url": "https://www.gstatic.com/generate_204",
 			"interval": "3m0s",
 			"tolerance": 1,
 			"idle_timeout": "9m0s"
