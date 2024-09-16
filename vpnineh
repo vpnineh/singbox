@@ -143,8 +143,7 @@
 				"Best Latency",
                         "1",
         "2",
-"3",
-"4"
+"3"
 			]
 		},
 		{
@@ -153,8 +152,7 @@
 			"outbounds": [
                         "1",
         "2",
-"3",
-"4"
+"3"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -174,7 +172,7 @@
         "type": "ws",
         "path": "/?ed=2048",
         "headers": {
-          "host": "ZmVuZzYuNG0tYnEyY2Uud29ya2Vycy5kZXY="
+          "host": "feng6.4m-bq2ce.workers.dev"
         }
       }
     },
@@ -198,23 +196,6 @@
 {
       "type": "vless",
       "tag": "3",
-      "server": "www.gov.ua",
-      "server_port": 8080,
-      "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
-      "tls": {
-        "enabled": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2048",
-        "headers": {
-          "host": "feng6.4m-bq2ce.workers.dev"
-        }
-      }
-    },
-{
-      "type": "vless",
-      "tag": "4",
       "server": "www.ipget.net",
       "server_port": 8080,
       "uuid": "b6cea380-cc8c-4e33-ab32-fc4d284ab5db",
