@@ -141,7 +141,8 @@
 				"Best Latency",
                         "1",
         "2",
-"3"
+"3",
+"4"
 			]
 		},
 		{
@@ -150,7 +151,8 @@
 			"outbounds": [
                         "1",
         "2",
-"3"
+"3",
+"4"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -205,6 +207,23 @@
         "path": "/?ed=2048",
         "headers": {
           "host": "feng6.4m-bq2ce.workers.dev"
+        }
+      }
+    },
+{
+      "type": "vless",
+      "tag": "4",
+      "server": "www.ipget.net",
+      "server_port": 8080,
+      "uuid": "b6cea380-cc8c-4e33-ab32-fc4d284ab5db",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "bei2.8l-0dfay.workers.dev"
         }
       }
     },
