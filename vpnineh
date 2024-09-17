@@ -223,7 +223,7 @@
       "security": "auto",
       "alter_id": 0,
       "tls": {
-        "enabled": true
+        "enabled": false
       },
       "transport": {
         "type": "ws",
@@ -242,7 +242,7 @@
       "security": "auto",
       "alter_id": 0,
       "tls": {
-        "enabled": true
+        "enabled": false
       },
       "transport": {
         "type": "ws",
