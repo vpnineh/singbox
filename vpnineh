@@ -251,7 +251,7 @@
           "host": "vfaridkv4.multifaceted2.workers.dev"
         }
       }
-    }
+    },
 		{
 			"type": "direct",
 			"tag": "direct"
