@@ -1,120 +1,263 @@
 {
-  "log": {
-    "disabled": false,
-    "level": "info",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
-      {
-        "tag": "proxy_dns",
-        "address": "tls://8.8.8.8/dns-query",
-        "detour": "select"
+	"log": {
+		"disabled": true,
+		"level": "panic"
+	},
+	"dns": {
+		"servers": [
+			{
+				"tag": "Internet-dns",
+				"address": "tcp://94.140.14.14",
+				"strategy": "prefer_ipv4",
+				"detour": "Internet"
+			},
+			{
+				"tag": "Best Latency-dns",
+				"address": "fakeip",
+				"strategy": "prefer_ipv4",
+				"detour": "Best Latency"
+			},
+			{
+				"tag": "direct-dns",
+				"address": "udp://8.8.8.8",
+				"strategy": "prefer_ipv4",
+				"detour": "direct"
+			},
+			{
+				"tag": "block-dns",
+				"address": "rcode://success"
+			}
+		],
+		"rules": [
+			{
+				"domain_suffix": [
+					"a1.dgi000.store",
+					"a2.dgi000.store",
+					"a3.dgi000.store"
+				],
+				"server": "direct-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"domain": "www.google.com",
+				"server": "Internet-dns",
+				"rewrite_ttl": 3000
+			},
+			{
+				"network": "udp",
+				"port": 443,
+				"server": "block-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"clash_mode": "Battery",
+				"server": "Internet-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"domain_regex": [
+					".*\\.ir$",
+					".*\\.xn--mgba3a4f16a$"
+				],
+				"server": "direct-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"rule_set": "geosite-ir",
+				"server": "direct-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"outbound": "Internet",
+				"server": "Internet-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"outbound": "Best Latency",
+				"server": "Best Latency-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"outbound": "direct",
+				"server": "direct-dns",
+				"rewrite_ttl": 20
+			},
+			{
+				"outbound": "any",
+				"server": "direct-dns",
+				"rewrite_ttl": 20
+			}
+		],
+		"final": "Internet-dns",
+		"fakeip": {
+			"enabled": true,
+			"inet4_range": "198.18.0.0/15",
+			"inet6_range": "fc00::/18"
+		},
+		"strategy": "prefer_ipv4",
+		"disable_expire": true
+	},
+	"inbounds": [
+		{
+			"type": "tun",
+			"tag": "tun-in",
+			"interface_name": "tun0",
+			"mtu": 9000,
+			"inet4_address": "172.19.0.1/30",
+			"inet6_address": "fdfe:dcba:9876::1/126",
+			"auto_route": true,
+			"strict_route": true,
+			"stack": "mixed",
+			"sniff": true,
+			"sniff_override_destination": true,
+			"domain_strategy": "prefer_ipv4"
+		},
+		{
+			"type": "mixed",
+			"tag": "mixed-in",
+			"listen": "0.0.0.0",
+			"listen_port": 2080,
+			"sniff": true,
+			"sniff_override_destination": true,
+			"domain_strategy": "prefer_ipv4"
+		},
+		{
+			"type": "direct",
+			"tag": "dns-in",
+			"listen": "0.0.0.0",
+			"listen_port": 6450,
+			"sniff": true,
+			"sniff_override_destination": true,
+			"domain_strategy": "prefer_ipv4",
+			"override_address": "8.8.8.8",
+			"override_port": 53
+		}
+	],
+	"outbounds": [
+		{
+			"type": "selector",
+			"tag": "Internet",
+			"outbounds": [
+				"Best Latency",
+                        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+			]
+		},
+		{
+			"type": "urltest",
+			"tag": "Best Latency",
+			"outbounds": [
+                        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+			],
+			"url": "http://www.google.com/generate_204",
+			"interval": "3m0s",
+			"tolerance": 1,
+			"idle_timeout": "9m0s"
+		},
+		 {
+      "type": "vless",
+      "tag": "1",
+      "server": "www.gov.ua",
+      "server_port": 8080,
+      "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
+      "tls": {
+        "enabled": false
       },
-      {
-        "tag": "local_dns",
-        "address": "h3://223.5.5.5/dns-query",
-        "detour": "direct"
-      },
-      {
-        "tag": "reject",
-        "address": "rcode://refused"
-      },
-      {
-        "tag": "fake_ip",
-        "address": "fakeip"
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "feng6.4m-bq2ce.workers.dev"
+        }
       }
-    ],
-    "rules": [
-      {
-        "outbound": "any",
-        "server": "local_dns",
-        "disable_cache": true
-      },
-      {
-        "clash_mode": "Global",
-        "server": "proxy_dns"
-      },
-      {
-        "clash_mode": "Direct",
-        "server": "local_dns"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "server": "local_dns"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "proxy_dns"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fake_ip"
-      }
-    ],
-    "final": "proxy_dns",
-    "independent_cache": true,
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    }
-  },
-  "ntp": {
-    "detour": "direct",
-    "enabled": true,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m"
-  },
-  "inbounds": [
-    {
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4",
-      "type": "tun",
-      "inet4_address": "172.16.0.1/30",
-      "inet6_address": "2001:0470:f9da:fdfa::1/64",
-      "mtu": 9000,
-      "auto_route": true,
-      "strict_route": true,
-      "endpoint_independent_nat": true
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "selector",
-      "tag": "select",
-      "outbounds": [
-        "url-test",
-        "@Freakconfig"
-      ],
-      "default": "url-test"
-    },
-    {
-      "type": "urltest",
-      "tag": "url-test",
-      "outbounds": [
-        "@Freakconfig"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "3m",
-      "tolerance": 50
     },
     {
       "type": "vless",
-      "tag": "@Freakconfig",
+      "tag": "2",
+      "server": "www.gov.ua",
+      "server_port": 8080,
+      "uuid": "464d644c-9c10-4c02-9117-4c75b0c347cd",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "wwwvisacomsg.mshcgb8q.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "3",
+      "server": "www.ipget.net",
+      "server_port": 8080,
+      "uuid": "4c9541c7-5fa1-403c-84af-175e3b25a27f",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "201.58vtg99l.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "4",
+      "server": "ip.sb",
+      "server_port": 8080,
+      "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "feng4.l1ut8bi9.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "5",
+      "server": "ip.sb",
+      "server_port": 8080,
+      "uuid": "b6cdbcb4-fccd-4237-b055-345a06eaa08e",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "302.j4tccyw7.workers.dev"
+        }
+      }
+    },
+     {
+      "type": "vless",
+      "tag": "6",
       "server": "172.66.47.155",
       "server_port": 443,
       "uuid": "34a83286-ba4e-4f0a-ac08-77a95469eeaf",
       "tls": {
-        "enabled": true,
+        "enabled": false,
         "utls": {
-          "enabled": true,
+          "enabled": false,
           "fingerprint": "randomized"
         }
       },
@@ -125,98 +268,102 @@
         }
       }
     },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "reject"
-    },
-    {
-      "type": "dns",
-      "tag": "dns_out"
-    }
-  ],
-  "route": {
-    "rules": [
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "protocol": "dns",
-        "outbound": "dns_out"
-      },
-      {
-        "rule_set": "geosite-category-ads-all",
-        "outbound": "reject"
-      },
-      {
-        "rule_set": "geoip-cn",
-        "outbound": "direct"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "outbound": "direct"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "outbound": "select"
-      }
-    ],
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "geoip-cn",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-        "download_detour": "select",
-        "update_interval": "1d"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-cn",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-        "download_detour": "select",
-        "update_interval": "1d"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-geolocation-!cn",
-        "format": "binary",
-        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "select",
-        "update_interval": "1d"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-category-ads-all",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
-        "download_detour": "select",
-        "update_interval": "1d"
-      }
-    ],
-    "final": "select",
-    "auto_detect_interface": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db"
-    },
-    "clash_api": {
-      "external_controller": "127.0.0.1:9090"
-    }
-  }
+		{
+			"type": "direct",
+			"tag": "direct"
+		},
+		{
+			"type": "block",
+			"tag": "block"
+		},
+		{
+			"type": "dns",
+			"tag": "dns-out"
+		}
+	],
+	"route": {
+		"rules": [
+			{
+				"inbound": "dns-in",
+				"outbound": "dns-out"
+			},
+			{
+				"port": 53,
+				"outbound": "dns-out"
+			},
+			{
+				"network": "udp",
+				"port": 443,
+				"outbound": "block"
+			},
+			{
+				"clash_mode": "Battery",
+				"outbound": "Internet"
+			},
+			{
+				"protocol": "stun",
+				"outbound": "block"
+			},
+			{
+				"ip_cidr": [
+					"10.10.34.34",
+					"10.10.34.35",
+					"10.10.34.36"
+				],
+				"outbound": "block"
+			},
+			{
+				"ip_is_private": true,
+				"outbound": "direct"
+			},
+			{
+				"domain_regex": [
+					".*\\.ir$",
+					".*\\.xn--mgba3a4f16a$"
+				],
+				"outbound": "direct"
+			},
+			{
+				"rule_set": [
+					"geoip-ir",
+					"geosite-ir"
+				],
+				"outbound": "direct"
+			}
+		],
+		"rule_set": [
+			{
+				"type": "remote",
+				"tag": "geoip-ir",
+				"format": "binary",
+				"url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+				"download_detour": "direct",
+				"update_interval": "168h0m0s"
+			},
+			{
+				"type": "remote",
+				"tag": "geosite-ir",
+				"format": "binary",
+				"url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+				"download_detour": "direct",
+				"update_interval": "168h0m0s"
+			}
+		],
+		"final": "Internet",
+		"auto_detect_interface": true,
+		"override_android_vpn": true
+	},
+	"experimental": {
+		"cache_file": {
+			"enabled": true,
+			"path": "cache.db",
+			"cache_id": "saeed",
+			"store_fakeip": true,
+			"store_rdrc": true,
+			"rdrc_timeout": "168h0m0s"
+		},
+		"clash_api": {
+			"default_mode": "IR mode"
+		}
+	}
 }
