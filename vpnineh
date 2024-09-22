@@ -219,7 +219,7 @@
       "server_port": 443,
       "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
       "tls": {
-        "enabled": false
+        "enabled": true
       },
       "transport": {
         "type": "ws",
