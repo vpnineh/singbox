@@ -215,17 +215,17 @@
     {
       "type": "vless",
       "tag": "4",
-      "server": "ip.sb",
-      "server_port": 8080,
-      "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
+      "server": "162.159.250.122",
+      "server_port": 443,
+      "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
       "tls": {
         "enabled": false
       },
       "transport": {
         "type": "ws",
-        "path": "/?ed=2048",
+        "path": "/glweidf.sbs:443/linkws",
         "headers": {
-          "host": "feng4.l1ut8bi9.workers.dev"
+          "host": "vfaridkv4.multifaceted2.workers.dev"
         }
       }
     },
