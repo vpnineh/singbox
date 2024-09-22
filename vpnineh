@@ -50,7 +50,7 @@
 				"rewrite_ttl": 20
 			},
 			{
-				"clash_mode": "Save Battery",
+				"clash_mode": "Save",
 				"server": "Internet-dns",
 				"rewrite_ttl": 20
 			},
