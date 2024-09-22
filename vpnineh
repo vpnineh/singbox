@@ -218,7 +218,6 @@
       "server": "162.159.250.122",
       "server_port": 443,
       "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
-      "alter_id": 0,
       "tls": {
         "enabled": false
       },
