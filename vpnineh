@@ -216,16 +216,16 @@
       "type": "vless",
       "tag": "4",
       "server": "162.159.250.122",
-      "server_port": 443,
-      "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
+      "server_port": 8080,
+      "uuid": "046da250-d5ef-4867-9095-302477d54d20",
       "tls": {
-        "enabled": true
+        "enabled": false
       },
       "transport": {
         "type": "ws",
-        "path": "/glweidf.sbs:443/linkws",
+        "path": "/?ed=2048",
         "headers": {
-          "host": "vfaridkv4.multifaceted2.workers.dev"
+          "host": "feng.ipy29c99.workers.dev"
         }
       }
     },
