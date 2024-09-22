@@ -248,14 +248,18 @@
         }
       }
     },
-   {
+     {
       "type": "vless",
       "tag": "6",
       "server": "172.66.47.155",
       "server_port": 443,
       "uuid": "34a83286-ba4e-4f0a-ac08-77a95469eeaf",
       "tls": {
-        "enabled": false
+        "enabled": true,
+        "utls": {
+          "enabled": false,
+          "fingerprint": "randomized"
+        }
       },
       "transport": {
         "type": "ws",
