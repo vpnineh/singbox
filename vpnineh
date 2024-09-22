@@ -212,12 +212,12 @@
         }
       }
     },
- {
+    {
       "type": "vless",
       "tag": "4",
       "server": "ip.sb",
       "server_port": 8080,
-      "uuid": "046da250-d5ef-4867-9095-302477d54d20",
+      "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
       "tls": {
         "enabled": false
       },
@@ -225,7 +225,7 @@
         "type": "ws",
         "path": "/?ed=2048",
         "headers": {
-          "host": "feng.ipy29c99.workers.dev"
+          "host": "feng4.l1ut8bi9.workers.dev"
         }
       }
     },
