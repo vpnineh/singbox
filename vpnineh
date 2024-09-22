@@ -211,13 +211,12 @@
           "host": "201.58vtg99l.workers.dev"
         }
       }
-    },
-    {
+    },		 {
       "type": "vless",
       "tag": "4",
-      "server": "162.159.250.122",
+      "server": "www.gov.ua",
       "server_port": 8080,
-      "uuid": "046da250-d5ef-4867-9095-302477d54d20",
+      "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
       "tls": {
         "enabled": false
       },
@@ -225,7 +224,7 @@
         "type": "ws",
         "path": "/?ed=2048",
         "headers": {
-          "host": "feng.ipy29c99.workers.dev"
+          "host": "feng6.4m-bq2ce.workers.dev"
         }
       }
     },
