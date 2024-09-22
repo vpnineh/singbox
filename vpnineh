@@ -7,7 +7,7 @@
 		"servers": [
 			{
 				"tag": "Internet-dns",
-				"address": "https://8.8.8.8/dns-query",
+				"address": "tcp://94.140.14.14",
 				"strategy": "prefer_ipv4",
 				"detour": "Internet"
 			},
@@ -19,7 +19,7 @@
 			},
 			{
 				"tag": "direct-dns",
-				"address": "https://8.8.8.8/dns-query",
+				"address": "udp://8.8.8.8",
 				"strategy": "prefer_ipv4",
 				"detour": "direct"
 			},
