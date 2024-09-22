@@ -50,7 +50,7 @@
 				"rewrite_ttl": 20
 			},
 			{
-				"clash_mode": "Save",
+				"clash_mode": "Battery",
 				"server": "Internet-dns",
 				"rewrite_ttl": 20
 			},
@@ -275,7 +275,7 @@
 				"outbound": "block"
 			},
 			{
-				"clash_mode": "Save",
+				"clash_mode": "Battery",
 				"outbound": "Internet"
 			},
 			{
@@ -341,7 +341,7 @@
 			"rdrc_timeout": "168h0m0s"
 		},
 		"clash_api": {
-			"default_mode": "Bypass-ir"
+			"default_mode": "IR mode"
 		}
 	}
 }
