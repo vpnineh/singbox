@@ -34,7 +34,8 @@
 					"www.gov.ua",
 					"www.ipget.net",
 					"ip.sb",
-					"172.66.47.155"
+					"172.66.47.155",
+					"time.is"
 				],
 				"server": "direct-dns",
 				"rewrite_ttl": 20
