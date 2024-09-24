@@ -35,7 +35,8 @@
 					"www.ipget.net",
 					"ip.sb",
 					"172.66.47.155",
-					"time.is"
+					"time.is",
+					"www.speedtest.net"
 				],
 				"server": "direct-dns",
 				"rewrite_ttl": 20
@@ -144,7 +145,8 @@
                         "1",
         "2",
         "3",
-        "4"
+        "4",
+        "5"
 			]
 		},
 		{
@@ -154,7 +156,8 @@
                         "1",
         "2",
         "3",
-        "4"
+        "4",
+        "5"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -232,7 +235,7 @@
     {
       "type": "vless",
       "tag": "5",
-      "server": "ip.sb",
+      "server": "www.speedtest.net",
       "server_port": 8080,
       "uuid": "b6cdbcb4-fccd-4237-b055-345a06eaa08e",
       "tls": {
