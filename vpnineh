@@ -19,7 +19,7 @@
 			},
 			{
 				"tag": "direct-dns",
-				"address": "tcp://94.140.14.14",
+				"address": "udp://8.8.8.8",
 				"strategy": "prefer_ipv4",
 				"detour": "direct"
 			},
