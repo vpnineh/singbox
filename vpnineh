@@ -252,32 +252,27 @@
         }
       }
     },
-       {
-            "type": "vless",
-            "server": "162.159.192.175",
-            "server_port": 443,
-            "uuid": "5ab76485-f6b9-4340-8be2-260bc8510cb0",
-            "domain_strategy": "prefer_ipv6",
-            "packet_encoding": "",
-            "tls": {
-                "enabled": true,
-                "insecure": true,
-                "server_name": "ecp.cushingreflex1.workers.dev",
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-		"path": "%2F%3Fed%3D2048",
-                "early_data_header_name": "Sec-WebSocket-Protocol",
-                "headers": {
-                    "Host": "ecp.cushingreflex1.workers.dev"
-                },
-                "type": "ws"
-            },
-            "tag": "6"
-        },
+    {
+      "type": "vless",
+      "tag": "6",
+      "server": "162.159.192.175",
+      "server_port": 443,
+      "uuid": "5ab76485-f6b9-4340-8be2-260bc8510cb0",
+      "tls": {
+        "enabled": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2048",
+        "headers": {
+          "host": "ecp.cushingreflex1.workers.dev"
+        }
+      }
+    },
 		{
 			"type": "direct",
 			"tag": "direct"
