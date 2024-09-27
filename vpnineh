@@ -259,7 +259,7 @@
       "server_port": 443,
       "uuid": "5ab76485-f6b9-4340-8be2-260bc8510cb0",
       "tls": {
-        "enabled": true,
+        "enabled": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
