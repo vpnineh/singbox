@@ -253,22 +253,23 @@
             "type": "vless",
             "server": "172.66.47.155",
             "server_port": 443,
-            "uuid": "34a83286-ba4e-4f0a-ac08-77a95469eeaf",
+            "uuid": "5ab76485-f6b9-4340-8be2-260bc8510cb0",
             "domain_strategy": "prefer_ipv6",
             "packet_encoding": "",
             "tls": {
                 "enabled": true,
                 "insecure": false,
-                "server_name": "pardazesh18.pages.dev",
+                "server_name": "ecp.cushingreflex1.workers.dev",
                 "utls": {
                     "enabled": true,
-                    "fingerprint": "randomized"
+                    "fingerprint": "chrome"
                 }
             },
             "transport": {
+		"path": "%2F%3Fed%3D2048",
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "pardazesh18.pages.dev"
+                    "Host": "ecp.cushingreflex1.workers.dev"
                 },
                 "type": "ws"
             },
