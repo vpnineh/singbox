@@ -254,14 +254,14 @@
     },
        {
             "type": "vless",
-            "server": "172.66.47.155",
+            "server": "162.159.192.175",
             "server_port": 443,
             "uuid": "5ab76485-f6b9-4340-8be2-260bc8510cb0",
             "domain_strategy": "prefer_ipv6",
             "packet_encoding": "",
             "tls": {
                 "enabled": true,
-                "insecure": false,
+                "insecure": true,
                 "server_name": "ecp.cushingreflex1.workers.dev",
                 "utls": {
                     "enabled": true,
