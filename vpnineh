@@ -259,7 +259,11 @@
       "password": "dba20dcb635e430fa4d3bfc303a149d2",
       "tls": {
         "enabled": false,
-        "insecure": false
+        "insecure": true,
+	"utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
       },
       "transport": {
         "type": "ws",
