@@ -257,14 +257,14 @@
       "server": "time.is",
       "server_port": 443,
       "password": "dba20dcb635e430fa4d3bfc303a149d2",
-      "tls": {
-        "enabled": false,
-        "insecure": true,
-	"utls": {
+                  "tls": {
+                "enabled": true,
+                "server_name": "vfaridkv4.multifaceted4.workers.dev",
+                "insecure": true,
+                "utls": {
                     "enabled": true,
                     "fingerprint": "chrome"
-                }
-      },
+                },
       "transport": {
         "type": "ws",
         "path": "/jobscareerforlawyers.com/6b777a91",
