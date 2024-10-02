@@ -258,8 +258,8 @@
       "server_port": 443,
       "password": "dba20dcb635e430fa4d3bfc303a149d2",
       "tls": {
-        "enabled": true,
-        "insecure": true
+        "enabled": false,
+        "insecure": false
       },
       "transport": {
         "type": "ws",
