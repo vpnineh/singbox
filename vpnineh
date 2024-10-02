@@ -264,7 +264,8 @@
                 "utls": {
                     "enabled": true,
                     "fingerprint": "chrome"
-                },
+                	}
+},
       "transport": {
         "type": "ws",
         "path": "/jobscareerforlawyers.com/6b777a91",
