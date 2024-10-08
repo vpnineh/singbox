@@ -143,6 +143,11 @@
 			"outbounds": [
 				"Best Latency",
                         "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+
         "6"
 			]
 		},
@@ -151,6 +156,11 @@
 			"tag": "Best Latency",
 			"outbounds": [
                         "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+
         "6"
 			],
 			"url": "http://www.google.com/generate_204",
