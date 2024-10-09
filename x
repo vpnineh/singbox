@@ -225,7 +225,7 @@
 {
       "type": "trojan",
       "tag": "4",
-      "server": "didgahnews.ir",
+      "server": "www.gov.ua",
       "server_port": 443,
       "password": "dba20dcb635e430fa4d3bfc303a149d2",
                   "tls": {
