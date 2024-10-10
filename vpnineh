@@ -256,7 +256,7 @@
        {
       "type": "trojan",
       "tag": "6",
-      "server": "time.is",
+      "server": "www.speedtest.net",
       "server_port": 443,
       "password": "dba20dcb635e430fa4d3bfc303a149d2",
                   "tls": {
