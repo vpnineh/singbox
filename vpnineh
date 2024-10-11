@@ -193,20 +193,26 @@
         }
       }
     },
-    {
-      "type": "vless",
+           {
+      "type": "trojan",
       "tag": "3",
-      "server": "www.ipget.net",
-      "server_port": 8080,
-      "uuid": "4c9541c7-5fa1-403c-84af-175e3b25a27f",
-      "tls": {
-        "enabled": false
-      },
+      "server": "didgahnews.ir",
+      "server_port": 443,
+      "password": "dba20dcb635e430fa4d3bfc303a149d2",
+                  "tls": {
+                "enabled": true,
+                "server_name": "vfaridkv4.multifaceted4.workers.dev",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                	}
+},
       "transport": {
         "type": "ws",
-        "path": "/?ed=2048",
+        "path": "/jobscareerforlawyers.com/6b777a91",
         "headers": {
-          "host": "201.58vtg99l.workers.dev"
+          "host": "vfaridkv4.multifaceted4.workers.dev"
         }
       }
     },
