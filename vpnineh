@@ -219,7 +219,7 @@
     {
       "type": "vless",
       "tag": "4",
-      "server": "ip.sb",
+      "server": "www.speedtest.net",
       "server_port": 8080,
       "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
       "tls": {
