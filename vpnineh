@@ -138,8 +138,8 @@
                         "3",
                         "4",
                         "5",
-
-        "6"
+                        "6",
+        "7"
 			]
 		},
 		{
@@ -151,8 +151,8 @@
                         "3",
                         "4",
                         "5",
-
-        "6"
+                        "6",
+        "7"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -270,6 +270,27 @@
         "path": "/jobscareerforlawyers.com/6b777a91",
         "headers": {
           "host": "vfaridkv4.multifaceted4.workers.dev"
+        }
+      }
+    },
+{
+      "type": "vless",
+      "tag": "7",
+      "server": "www.speedtest.net",
+      "server_port": 2053,
+      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+      "tls": {
+        "enabled": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/nOzpwy9sYkUaqscP?ed=2560",
+        "headers": {
+          "host": "51a019e5.BpB-PanEl45.paGeS.DEv"
         }
       }
     },
