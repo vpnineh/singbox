@@ -223,19 +223,35 @@
       }
     },
 {
-      "type": "trojan",
-      "tag": "4",
-      "server": "www.gov.ua",
-      "server_port": 443,
-      "password": "dba20dcb635e430fa4d3bfc303a149d2",
-                  "tls": {
-                "enabled": true,
-                "server_name": "vfaridkv4.multifaceted4.workers.dev",
-                "insecure": true,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                	}
+  "server": "www.speedtest.net",
+  "server_port": 2053,
+  "tag": "4",
+  "type": "vless",
+  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "packet_encoding": "xudp",
+  "tls": {
+    "enabled": true,
+    "server_name": "51A019E5.bPb-PaNeL45.paGEs.dev",
+    "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
+    "utls": {
+      "enabled": true,
+      "fingerprint": "randomized"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/nOzpwy9sYkUaqscP",
+    "headers": {
+      "Host": [
+        "51a019e5.BpB-PanEl45.paGeS.DEv"
+      ]
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
 },
       "transport": {
         "type": "ws",
