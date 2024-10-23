@@ -225,7 +225,7 @@
 {
   "server": "www.speedtest.net",
   "server_port": 2053,
-  "tag": "4",
+  "tag": "7",
   "type": "vless",
   "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
   "packet_encoding": "xudp",
@@ -253,14 +253,6 @@
     "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
-      "transport": {
-        "type": "ws",
-        "path": "/jobscareerforlawyers.com/6b777a91",
-        "headers": {
-          "host": "vfaridkv4.multifaceted4.workers.dev"
-        }
-      }
-    },
     {
       "type": "direct",
       "tag": "direct"
