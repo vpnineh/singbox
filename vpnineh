@@ -193,29 +193,33 @@
         }
       }
     },
-           {
-      "type": "trojan",
-      "tag": "3",
-      "server": "didgahnews.ir",
-      "server_port": 443,
-      "password": "dba20dcb635e430fa4d3bfc303a149d2",
-                  "tls": {
-                "enabled": true,
-                "server_name": "vfaridkv4.multifaceted4.workers.dev",
-                "insecure": true,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                	}
+          {
+  "server": "190.93.247.244",
+  "server_port": 443,
+  "tag": "3",
+  "type": "vless",
+  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "packet_encoding": "xudp",
+  "tls": {
+    "enabled": true,
+    "server_name": "BPB-V.PAGes.DeV",
+    "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
+    "utls": {
+      "enabled": true,
+      "fingerprint": "randomized"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/kOaUU4Imla9qc09v/MTI5LjE1OS4yNDEuMTcy",
+    "headers": {
+      "Host": "BpB-V.pAGes.Dev"
+    }
+  }
 },
-      "transport": {
-        "type": "ws",
-        "path": "/jobscareerforlawyers.com/6b777a91",
-        "headers": {
-          "host": "vfaridkv4.multifaceted4.workers.dev"
-        }
-      }
-    },
     {
       "type": "vless",
       "tag": "4",
