@@ -327,6 +327,18 @@
       "fingerprint": "randomized"
     }
   },
+  "transport": {
+    "type": "ws",
+    "path": "/trojanfree-76s.pages.dev/",
+    "headers": {
+      "Host": [
+        "trojanfree-76s.pages.dev"
+      ]
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
+},
 {
   "server": "myworker.wowag46097.workers.dev",
   "server_port": 2087,
@@ -352,18 +364,6 @@
     "headers": {
       "Host": [
         "myworker.wowag46097.workers.dev"
-      ]
-    },
-    "max_early_data": 2560,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
-  }
-},
-  "transport": {
-    "type": "ws",
-    "path": "/trojanfree-76s.pages.dev/",
-    "headers": {
-      "Host": [
-        "trojanfree-76s.pages.dev"
       ]
     },
     "max_early_data": 2560,
