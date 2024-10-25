@@ -141,7 +141,8 @@
                         "6",
        			"7",
 			"8",
-			"9"
+			"9",
+			"10"
 			]
 		},
 		{
@@ -156,7 +157,8 @@
                         "6",
         		"7",
 			"8",
-			"9"
+			"9",
+			"10"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -368,6 +370,35 @@
     },
     "max_early_data": 2560,
     "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
+},
+{
+  "server": "92.243.74.32",
+  "server_port": 443,
+  "tag": "10",
+  "type": "vless",
+  "uuid": "4045e84e-5e3c-4f70-8ff5-c1097882a55a",
+  "packet_encoding": "xudp",
+  "tls": {
+    "enabled": true,
+    "server_name": "46f1e1b85d20fe02366adb4c76c939969229d774.70feadb1e6e3b3d1550ab7bcb167631c4475721355e891157be57f936aaca8e.workers.dev",
+    "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
+    "utls": {
+      "enabled": true,
+      "fingerprint": "chrome"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/BPb-WOrKeR-paneL1-e4P.PAGES.DEV",
+    "headers": {
+      "Host": [
+        "46f1e1b85d20fe02366adb4c76c939969229d774.70feadb1e6e3b3d1550ab7bcb167631c4475721355e891157be57f936aaca8e.workers.dev"
+      ]
+    }
   }
 },
     {
