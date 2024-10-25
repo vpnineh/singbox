@@ -140,7 +140,8 @@
                         "5",
                         "6",
        			"7",
-			"8"
+			"8",
+			"9"
 			]
 		},
 		{
@@ -154,7 +155,8 @@
                         "5",
                         "6",
         		"7",
-			"8"
+			"8",
+			"9"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -325,6 +327,37 @@
       "fingerprint": "randomized"
     }
   },
+{
+  "server": "myworker.wowag46097.workers.dev",
+  "server_port": 2087,
+  "tag": "9",
+  "type": "vless",
+  "uuid": "211db07d-8ba1-472b-8779-f842a49ffa69",
+  "packet_encoding": "xudp",
+  "tls": {
+    "enabled": true,
+    "server_name": "MywORkER.WOWAg46097.woRkErs.Dev",
+    "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
+    "utls": {
+      "enabled": true,
+      "fingerprint": "randomized"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/6XE1phZagL53fCWN",
+    "headers": {
+      "Host": [
+        "myworker.wowag46097.workers.dev"
+      ]
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
+},
   "transport": {
     "type": "ws",
     "path": "/trojanfree-76s.pages.dev/",
