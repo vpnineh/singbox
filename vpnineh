@@ -139,7 +139,8 @@
                         "4",
                         "5",
                         "6",
-        "7"
+       			"7",
+			"8"
 			]
 		},
 		{
@@ -152,7 +153,8 @@
                         "4",
                         "5",
                         "6",
-        "7"
+        		"7",
+			"8"
 			],
 			"url": "http://www.google.com/generate_204",
 			"interval": "3m0s",
@@ -302,6 +304,33 @@
     "headers": {
       "Host": [
         "51a019e5.BpB-PanEl45.paGeS.DEv"
+      ]
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
+},
+{
+  "server": "visa.cn",
+  "server_port": 443,
+  "tag": "8",
+  "type": "trojan",
+  "password": "auto",
+  "tls": {
+    "enabled": true,
+    "server_name": "trojanfree-76s.pages.dev",
+    "insecure": true,
+    "utls": {
+      "enabled": true,
+      "fingerprint": "randomized"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/trojanfree-76s.pages.dev/",
+    "headers": {
+      "Host": [
+        "trojanfree-76s.pages.dev"
       ]
     },
     "max_early_data": 2560,
