@@ -261,28 +261,32 @@
       }
     },
        {
-      "type": "trojan",
-      "tag": "6",
-      "server": "www.speedtest.net",
-      "server_port": 443,
-      "password": "dba20dcb635e430fa4d3bfc303a149d2",
-                  "tls": {
-                "enabled": true,
-                "server_name": "vfaridkv4.multifaceted4.workers.dev",
-                "insecure": true,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                	}
-},
-      "transport": {
-        "type": "ws",
-        "path": "/jobscareerforlawyers.com/6b777a91",
-        "headers": {
-          "host": "vfaridkv4.multifaceted4.workers.dev"
-        }
-      }
+  "server": "joinv2ngfast-7nr.pages.dev",
+  "server_port": 2096,
+  "tag": "6",
+  "type": "vless",
+  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "packet_encoding": "xudp",
+  "tls": {
+    "enabled": true,
+    "server_name": "joinV2NGFasT-7Nr.pAgeS.DeV",
+    "insecure": true,
+    "utls": {
+      "enabled": true
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/mOD571okkDg4TqCz",
+    "headers": {
+      "Host": [
+        "jOINV2ngfast-7nr.PAges.Dev"
+      ]
     },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
+},
 {
   "server": "www.speedtest.net",
   "server_port": 2053,
