@@ -315,26 +315,30 @@
   }
 },
 {
-  "server": "visa.cn",
+  "server": "www.speedtest.net",
   "server_port": 443,
   "tag": "8",
-  "type": "trojan",
-  "password": "auto",
+  "type": "vless",
+  "uuid": "2ee1ec37-c543-47ce-946c-2f689b20af86",
+  "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "trojanfree-76s.pages.dev",
+    "server_name": "pages.dev",
     "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
     "utls": {
       "enabled": true,
-      "fingerprint": "randomized"
+      "fingerprint": "chrome"
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/trojanfree-76s.pages.dev/",
+    "path": "/@custom_config",
     "headers": {
       "Host": [
-        "trojanfree-76s.pages.dev"
+        "jobinja.pages.dev"
       ]
     },
     "max_early_data": 2560,
