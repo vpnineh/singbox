@@ -480,7 +480,6 @@
   "server_port": 443,
   "tag": "13",
   "type": "vless",
-  "attach": "",
   "uuid": "c6d299d4-db0b-4444-8b56-b23bbdcbcd67",
   "packet_encoding": "xudp",
   "tls": {
