@@ -505,28 +505,26 @@
   }
 },
 {
-  "server": "www.speedtest.net",
+  "server": "172.66.46.213",
   "server_port": 443,
   "tag": "14",
-  "type": "vmess",
-  "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
-  "security": "auto",
-  "alter_id": 0,
+  "type": "vless",
+  "uuid": "eea0cd66-f631-46e5-8a68-e74797784eeb",
+  "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "linde06.indiavideo.sbs",
+    "server_name": "speedtest1.svgspeedtest.net",
     "insecure": true,
     "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
+      "enabled": true
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/linkws",
+    "path": "/@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy",
     "headers": {
       "Host": [
-        "linde06.indiavideo.sbs"
+        "speedtest1.svgspeedtest.net"
       ]
     }
   }
