@@ -505,7 +505,7 @@
   }
 },
 {
-  "server": "172.66.46.213",
+  "server": "www.speedtest.net",
   "server_port": 443,
   "tag": "14",
   "type": "vless",
