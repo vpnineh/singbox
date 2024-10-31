@@ -476,19 +476,15 @@
   }
 },
 {
-  "server": "www.speedtest.net",
+  "server": "time.is",
   "server_port": 443,
   "tag": "13",
-  "type": "vless",
-  "uuid": "c6d299d4-db0b-4444-8b56-b23bbdcbcd67",
-  "packet_encoding": "xudp",
+  "type": "trojan",
+  "password": "bpb-trojan",
   "tls": {
     "enabled": true,
-    "server_name": "midsUMmER-Bpb.pAgES.DEV",
+    "server_name": "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev",
     "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
     "utls": {
       "enabled": true,
       "fingerprint": "chrome"
@@ -496,10 +492,10 @@
   },
   "transport": {
     "type": "ws",
-    "path": "/",
+    "path": "/403b3611-99bC-43b7-88D7-26ED5D0825A9-3.pagES.DEv/trSo3btsDgOHHUM6Nb",
     "headers": {
       "Host": [
-        "mIDsuMMer-bpb.PAgEs.DeV"
+        "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev"
       ]
     }
   }
