@@ -509,22 +509,26 @@
   "server_port": 443,
   "tag": "14",
   "type": "vless",
-  "uuid": "eea0cd66-f631-46e5-8a68-e74797784eeb",
+  "uuid": "03a987de-7e12-4b38-acbc-e19c90e1cc85",
   "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "speedtest1.svgspeedtest.net",
+    "server_name": "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev",
     "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
     "utls": {
-      "enabled": true
+      "enabled": true,
+      "fingerprint": "chrome"
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy----@XvProxy",
+    "path": "/ARCane-ROYAL.Pages.DEV",
     "headers": {
       "Host": [
-        "speedtest1.svgspeedtest.net"
+        "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev"
       ]
     }
   }
