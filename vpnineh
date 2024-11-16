@@ -268,30 +268,31 @@
         }
       }
     },
-       {
-  "server": "joinv2ngfast-7nr.pages.dev",
+{
+  "server": "104.26.14.85",
   "server_port": 2096,
   "tag": "6",
   "type": "vless",
-  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "uuid": "d3a12e79-ef42-4268-b367-42eeb3494e60",
   "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "joinV2NGFasT-7Nr.pAgeS.DeV",
+    "server_name": "hagh.pages.dev",
     "insecure": true,
     "utls": {
-      "enabled": true
+      "enabled": true,
+      "fingerprint": "chrome"
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/mOD571okkDg4TqCz",
+    "path": "/",
     "headers": {
       "Host": [
-        "jOINV2ngfast-7nr.PAges.Dev"
+        "hagh.pages.dev"
       ]
     },
-    "max_early_data": 2560,
+    "max_early_data": 2048,
     "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
@@ -328,14 +329,14 @@
 },
 {
   "server": "www.speedtest.net",
-  "server_port": 443,
+  "server_port": 8443,
   "tag": "8",
   "type": "vless",
-  "uuid": "2ee1ec37-c543-47ce-946c-2f689b20af86",
+  "uuid": "ffd32c63-3151-4abf-8e4d-0042cc6adf88",
   "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "pages.dev",
+    "server_name": "join.bede.VPNCUSTOMIZE.www.speedtest.net.nl.Powerfullserver.de",
     "insecure": true,
     "alpn": [
       "http/1.1"
@@ -347,13 +348,13 @@
   },
   "transport": {
     "type": "ws",
-    "path": "/@custom_config",
+    "path": "/Telegram,VPNCUSTOMIZE",
     "headers": {
       "Host": [
-        "jobinja.pages.dev"
+        "join.bede.VPNCUSTOMIZE.www.speedtest.net.nl.Powerfullserver.de"
       ]
     },
-    "max_early_data": 2560,
+    "max_early_data": 8080,
     "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
@@ -393,28 +394,26 @@
   "server_port": 443,
   "tag": "10",
   "type": "vless",
-  "uuid": "4045e84e-5e3c-4f70-8ff5-c1097882a55a",
+  "uuid": "ea93598b-a8d8-449a-a925-520c6e1626ee",
   "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "46f1e1b85d20fe02366adb4c76c939969229d774.70feadb1e6e3b3d1550ab7bcb167631c4475721355e891157be57f936aaca8e.workers.dev",
+    "server_name": "pardazeshvpn-tg105.pages.dev",
     "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
     "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
+      "enabled": true
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/BPb-WOrKeR-paneL1-e4P.PAGES.DEV",
+    "path": "/Telegram-@V2ray_Alpha/",
     "headers": {
       "Host": [
-        "46f1e1b85d20fe02366adb4c76c939969229d774.70feadb1e6e3b3d1550ab7bcb167631c4475721355e891157be57f936aaca8e.workers.dev"
+        "pardazeshvpn-tg105.pages.dev"
       ]
-    }
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
