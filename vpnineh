@@ -446,32 +446,22 @@
   }
 },
 {
-  "server": "time.is",
-  "server_port": 443,
+  "server": "ip.sb",
+  "server_port": 8080,
   "tag": "12",
   "type": "vless",
-  "uuid": "a64f0cea-ca89-40e6-b316-b3badff1eb90",
+  "uuid": "b6cdbcb4-fccd-4237-b055-345a06eaa08e",
   "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "iSaa1.PAGeS.DeV",
-    "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
-    "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
-    }
-  },
   "transport": {
     "type": "ws",
-    "path": "/BDwnEtVwG7BS0S9f?ed",
+	"path": "/?ed=2048",
     "headers": {
       "Host": [
-        "iSAA1.paGEs.DEV"
+        "302.j4tccyw7.workers.dev"
       ]
-    }
+    },
+    "max_early_data": 2048,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
@@ -500,15 +490,15 @@
   }
 },
 {
-  "server": "www.speedtest.net",
+  "server": "time.is",
   "server_port": 443,
   "tag": "14",
   "type": "vless",
-  "uuid": "03a987de-7e12-4b38-acbc-e19c90e1cc85",
+  "uuid": "89e2a192-af3c-11ef-9276-0016b061439e",
   "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev",
+    "server_name": "infrastructure.f657acb00ed1cdff083dabfafe1ca26396033ae653ea40f324aea2f2f9bff19.workers.dev",
     "insecure": true,
     "alpn": [
       "http/1.1"
@@ -520,10 +510,10 @@
   },
   "transport": {
     "type": "ws",
-    "path": "/ARCane-ROYAL.Pages.DEV",
+    "path": "/ae1-vless.dnsx.my.id/vless",
     "headers": {
       "Host": [
-        "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev"
+        "infrastructure.f657acb00ed1cdff083dabfafe1ca26396033ae653ea40f324aea2f2f9bff19.workers.dev"
       ]
     }
   }
