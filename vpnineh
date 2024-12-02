@@ -390,59 +390,41 @@
   }
 },
 {
-  "server": "www.speedtest.net",
-  "server_port": 443,
+  "server": "www.ipget.net",
+  "server_port": 8080,
   "tag": "10",
   "type": "vless",
-  "uuid": "ea93598b-a8d8-449a-a925-520c6e1626ee",
+  "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
   "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "pardazeshvpn-tg105.pages.dev",
-    "insecure": true,
-    "utls": {
-      "enabled": true
-    }
-  },
   "transport": {
     "type": "ws",
-    "path": "/Telegram-@V2ray_Alpha/",
+	"path": "/?ed=2048",
     "headers": {
       "Host": [
-        "pardazeshvpn-tg105.pages.dev"
+        "feng6.4m-bq2ce.workers.dev"
       ]
     },
-    "max_early_data": 2560,
+    "max_early_data": 2048,
     "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
-  "server": "www.speedtest.net",
-  "server_port": 2083,
+  "server": "ip.sb",
+  "server_port": 8080,
   "tag": "11",
   "type": "vless",
-  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "uuid": "6f183280-b258-437a-a216-e83f7dece776",
   "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "ArGodev11222.PaGes.Dev",
-    "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
-    "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
-    }
-  },
   "transport": {
     "type": "ws",
-    "path": "/",
-    "headers": {
+	"path": "/?ed=2048",
+	"headers": {
       "Host": [
-        "argodev11222.pages.dev"
+        "901.dbodanwi.workers.dev"
       ]
-    }
+    },
+    "max_early_data": 2048,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
