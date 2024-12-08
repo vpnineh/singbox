@@ -297,34 +297,33 @@
   }
 },
 {
-  "server": "www.speedtest.net",
-  "server_port": 2053,
+  "server": "172.232.50.230",
+  "server_port": 443,
   "tag": "7",
-  "type": "vless",
-  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-  "packet_encoding": "xudp",
+  "type": "vmess",
+  "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
+  "security": "auto",
+  "alter_id": 0,
   "tls": {
     "enabled": true,
-    "server_name": "51A019E5.bPb-PaNeL45.paGEs.dev",
+    "server_name": "glweidf.sbs",
     "insecure": true,
     "alpn": [
       "http/1.1"
     ],
     "utls": {
       "enabled": true,
-      "fingerprint": "randomized"
+      "fingerprint": "chrome"
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/nOzpwy9sYkUaqscP",
+    "path": "/linkws",
     "headers": {
       "Host": [
-        "51a019e5.BpB-PanEl45.paGeS.DEv"
+        "glweidf.sbs"
       ]
-    },
-    "max_early_data": 2560,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
   }
 },
 {
