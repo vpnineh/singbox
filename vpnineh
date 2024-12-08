@@ -326,35 +326,30 @@
     }
   }
 },
-{
-  "server": "www.speedtest.net",
-  "server_port": 8443,
+
+  "server": "time.is",
+  "server_port": 443,
   "tag": "8",
-  "type": "vless",
-  "uuid": "ffd32c63-3151-4abf-8e4d-0042cc6adf88",
-  "packet_encoding": "xudp",
+  "type": "vmess",
+  "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a",
+  "security": "auto",
+  "alter_id": 0,
   "tls": {
     "enabled": true,
-    "server_name": "join.bede.VPNCUSTOMIZE.www.speedtest.net.nl.Powerfullserver.de",
+    "server_name": "hms02.fxiaomi.sbs",
     "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
     "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
+      "enabled": true
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/Telegram,VPNCUSTOMIZE",
+    "path": "/link",
     "headers": {
       "Host": [
-        "join.bede.VPNCUSTOMIZE.www.speedtest.net.nl.Powerfullserver.de"
+        "hms02.fxiaomi.sbs"
       ]
-    },
-    "max_early_data": 8080,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
   }
 },
 {
