@@ -348,34 +348,21 @@
   }
 },
 {
-  "server": "myworker.wowag46097.workers.dev",
-  "server_port": 2087,
+  "server": "104.16.68.38",
+  "server_port": 8880,
   "tag": "9",
-  "type": "vless",
-  "uuid": "211db07d-8ba1-472b-8779-f842a49ffa69",
-  "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "MywORkER.WOWAg46097.woRkErs.Dev",
-    "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
-    "utls": {
-      "enabled": true,
-      "fingerprint": "randomized"
-    }
-  },
+  "type": "vmess",
+  "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
+  "security": "auto",
+  "alter_id": 0,
   "transport": {
     "type": "ws",
-    "path": "/6XE1phZagL53fCWN",
+    "path": "/glweidf.sbs/linkws",
     "headers": {
       "Host": [
-        "myworker.wowag46097.workers.dev"
+        "worker-lingering-fog-c021.gesofog870.workers.dev"
       ]
-    },
-    "max_early_data": 2560,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
   }
 },
 {
