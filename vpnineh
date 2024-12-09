@@ -366,22 +366,21 @@
   }
 },
 {
-  "server": "www.ipget.net",
-  "server_port": 8080,
+  "server": "104.16.68.38",
+  "server_port": 8880,
   "tag": "10",
-  "type": "vless",
-  "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
-  "packet_encoding": "xudp",
+  "type": "vmess",
+  "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
+  "security": "auto",
+  "alter_id": 0,
   "transport": {
     "type": "ws",
-	"path": "/?ed=2048",
+    "path": "/glweidf.sbs/linkws",
     "headers": {
       "Host": [
-        "feng6.4m-bq2ce.workers.dev"
+        "worker-lingering-fog-c021.gesofog870.workers.dev"
       ]
-    },
-    "max_early_data": 2048,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
   }
 },
 {
