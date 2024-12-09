@@ -436,55 +436,53 @@
   }
 },
 {
-  "server": "time.is",
-  "server_port": 443,
+  "server": "104.16.67.38",
+  "server_port": 2096,
   "tag": "13",
-  "type": "trojan",
-  "password": "bpb-trojan",
+  "type": "vmess",
+  "uuid": "1052f24e-7b09-45eb-b0c5-d858eb124192",
+  "security": "auto",
+  "alter_id": 0,
   "tls": {
     "enabled": true,
-    "server_name": "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev",
+    "server_name": "worker-flat-hat-00f2.ravapim426.workers.dev",
     "insecure": true,
     "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
+      "enabled": true
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/403b3611-99bC-43b7-88D7-26ED5D0825A9-3.pagES.DEv/trSo3btsDgOHHUM6Nb",
+    "path": "/glweidf.cfd/linkws",
     "headers": {
       "Host": [
-        "cd2d4dde83c53c9021bab75064df1e6ff5a8f3a4942e2b7b71b52d0d7d231a5.8c27ea24ee9ccbe0948c18e12d0ac59695afcac0a1f5423deac44769cb16f30.workers.dev"
+        "worker-flat-hat-00f2.ravapim426.workers.dev"
       ]
     }
   }
 },
 {
-  "server": "time.is",
-  "server_port": 443,
+  "server": "104.16.60.8",
+  "server_port": 2083,
   "tag": "14",
-  "type": "vless",
-  "uuid": "89e2a192-af3c-11ef-9276-0016b061439e",
-  "packet_encoding": "xudp",
+  "type": "vmess",
+  "uuid": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d",
+  "security": "auto",
+  "alter_id": 0,
   "tls": {
     "enabled": true,
-    "server_name": "infrastructure.f657acb00ed1cdff083dabfafe1ca26396033ae653ea40f324aea2f2f9bff19.workers.dev",
+    "server_name": "xxxxx73cream-073cxxxxxxxx.cogoni7748.workers.dev",
     "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
     "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
+      "enabled": true
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/ae1-vless.dnsx.my.id/vless",
+    "path": "/obdii.cfd/linkws",
     "headers": {
       "Host": [
-        "infrastructure.f657acb00ed1cdff083dabfafe1ca26396033ae653ea40f324aea2f2f9bff19.workers.dev"
+        "xxxxx73cream-073cxxxxxxxx.cogoni7748.workers.dev"
       ]
     }
   }
