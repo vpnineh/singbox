@@ -174,22 +174,31 @@
 			"idle_timeout": "9m0s"
 		},
 		 {
-      "type": "vless",
-      "tag": "1",
-      "server": "www.gov.ua",
-      "server_port": 8080,
-      "uuid": "89c21153-67d9-4505-a25c-cef293500eb8",
-      "tls": {
-        "enabled": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2048",
-        "headers": {
-          "host": "feng6.4m-bq2ce.workers.dev"
-        }
-      }
-    },
+  "server": "69.50.93.90",
+  "server_port": 443,
+  "tag": "1",
+  "type": "vmess",
+  "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+  "security": "auto",
+  "alter_id": 0,
+  "tls": {
+    "enabled": true,
+    "server_name": "69.50.93.90",
+    "insecure": true,
+    "utls": {
+      "enabled": true
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/linkvws",
+    "headers": {
+      "Host": [
+        "69.50.93.90"
+      ]
+    }
+  }
+},
     {
   "server": "77.72.5.150",
   "server_port": 989,
@@ -199,31 +208,12 @@
   "password": "f8f7aCzcPKbsF8p3"
 },
           {
-  "server": "www.speedtest.net",
+  "server": "series-a2-me.varzesh360.co",
   "server_port": 443,
   "tag": "3",
-  "type": "vless",
-  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-  "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "BPB-V.PAGes.DeV",
-    "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
-    "utls": {
-      "enabled": true,
-      "fingerprint": "randomized"
-    }
-  },
-  "transport": {
-    "type": "ws",
-    "path": "/kOaUU4Imla9qc09v/MTI5LjE1OS4yNDEuMTcy",
-    "headers": {
-      "Host": "BpB-V.pAGes.Dev"
-    }
-  }
+  "type": "shadowsocks",
+  "method": "chacha20-ietf-poly1305",
+  "password": "Bog0ELmMM9DSxDdQ"
 },
     {
       "type": "vless",
@@ -243,22 +233,13 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "5",
-      "server": "www.speedtest.net",
-      "server_port": 8080,
-      "uuid": "b6cdbcb4-fccd-4237-b055-345a06eaa08e",
-      "tls": {
-        "enabled": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2048",
-        "headers": {
-          "host": "302.j4tccyw7.workers.dev"
-        }
-      }
-    },
+  "server": "series-a2.samanehha.co",
+  "server_port": 443,
+  "tag": "5",
+  "type": "shadowsocks",
+  "method": "chacha20-ietf-poly1305",
+  "password": "mps3FwmDjLrWaOVg"
+},
 {
   "server": "ip.sb",
   "server_port": 8080,
