@@ -362,7 +362,6 @@
   "server_port": 989,
   "tag": "14",
   "type": "shadowsocks",
-  "attach": "",
   "method": "aes-256-cfb",
   "password": "f8f7aCzcPKbsF8p3"
 },
