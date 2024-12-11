@@ -216,22 +216,13 @@
   "password": "Bog0ELmMM9DSxDdQ"
 },
     {
-      "type": "vless",
-      "tag": "4",
-      "server": "www.speedtest.net",
-      "server_port": 8080,
-      "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
-      "tls": {
-        "enabled": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2048",
-        "headers": {
-          "host": "feng4.l1ut8bi9.workers.dev"
-        }
-      }
-    },
+  "server": "80.92.204.106",
+  "server_port": 9094,
+  "tag": "4",
+  "type": "shadowsocks",
+  "method": "aes-256-cfb",
+  "password": "rpgbNnU9rDDU4aWZ"
+},
   {
   "server": "45.89.52.66",
   "server_port": 9043,
@@ -241,26 +232,33 @@
   "password": "HSZuyJQcWe8dxNdF"
 },
 {
-  "server": "ip.sb",
-  "server_port": 8080,
+  "server": "23.162.200.227",
+  "server_port": 443,
   "tag": "6",
-  "type": "vless",
-  "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
-  "packet_encoding": "xudp",
+  "type": "vmess",
+  "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+  "security": "auto",
+  "alter_id": 0,
+  "tls": {
+    "enabled": true,
+    "server_name": "23.162.200.227",
+    "insecure": true,
+    "utls": {
+      "enabled": true
+    }
+  },
   "transport": {
     "type": "ws",
-    "path": "/",
+    "path": "/linkvws",
     "headers": {
       "Host": [
-        "feng4.l1ut8bi9.workers.dev"
+        "23.162.200.227"
       ]
-    },
-    "max_early_data": 2048,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
   }
 },
 {
-  "server": "www.speedtest.net",
+  "server": "172.232.50.230",
   "server_port": 443,
   "tag": "7",
   "type": "vmess",
@@ -290,22 +288,29 @@
   }
 },
 {
-  "server": "www.ipget.net",
-  "server_port": 8080,
+  "server": "23.162.200.227",
+  "server_port": 443,
   "tag": "8",
-  "type": "vless",
-  "uuid": "318c375c-1f29-4b30-8875-2c4c54d7c38d",
-  "packet_encoding": "xudp",
+  "type": "vmess",
+  "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+  "security": "auto",
+  "alter_id": 0,
+  "tls": {
+    "enabled": true,
+    "server_name": "23.162.200.227",
+    "insecure": true,
+    "utls": {
+      "enabled": true
+    }
+  },
   "transport": {
     "type": "ws",
-    "path": "/",
+    "path": "/linkvws",
     "headers": {
       "Host": [
-        "feng3.2n7y5pja.workers.dev"
+        "23.162.200.227"
       ]
-    },
-    "max_early_data": 2048,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
   }
 },
 {
