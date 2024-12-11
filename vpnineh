@@ -269,26 +269,22 @@
       }
     },
 {
-  "server": "89.187.169.71",
-  "server_port": 443,
+  "server": "ip.sb",
+  "server_port": 8080,
   "tag": "6",
   "type": "vless",
-  "uuid": "6ff213b8-ccc7-4b5a-b4aa-37f7b792a1f1",
-  "flow": "xtls-rprx-vision",
+  "uuid": "d6ff33a6-03bf-4338-8a63-62ab284a9466",
   "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "www.cloudflare.com",
-    "insecure": true,
-    "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
+  "transport": {
+    "type": "ws",
+    "path": "/",
+    "headers": {
+      "Host": [
+        "feng4.l1ut8bi9.workers.dev"
+      ]
     },
-    "reality": {
-      "enabled": true,
-      "public_key": "B5i03yc1WUTOQD8v_N0UrCUaR4AgMJ40rEl8tXUJY0g",
-      "short_id": "01b200e90e250221"
-    }
+    "max_early_data": 2048,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
@@ -322,29 +318,22 @@
   }
 },
 {
-  "server": "time.is",
-  "server_port": 443,
+  "server": "www.ipget.net",
+  "server_port": 8080,
   "tag": "8",
-  "type": "vmess",
-  "uuid": "6c168fcc-2231-4f3b-8c1e-f6391692df4a",
-  "security": "auto",
-  "alter_id": 0,
-  "tls": {
-    "enabled": true,
-    "server_name": "hms02.fxiaomi.sbs",
-    "insecure": true,
-    "utls": {
-      "enabled": true
-    }
-  },
+  "type": "vless",
+  "uuid": "318c375c-1f29-4b30-8875-2c4c54d7c38d",
+  "packet_encoding": "xudp",
   "transport": {
     "type": "ws",
-    "path": "/link",
+    "path": "/",
     "headers": {
       "Host": [
-        "hms02.fxiaomi.sbs"
+        "feng3.2n7y5pja.workers.dev"
       ]
-    }
+    },
+    "max_early_data": 2048,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
