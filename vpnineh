@@ -358,12 +358,13 @@
   "password": "f8f7aCzcPKbsF8p3"
 },
 {
-  "server": "81.19.141.45",
-  "server_port": 52873,
+  "server": "77.72.5.113",
+  "server_port": 989,
   "tag": "14",
   "type": "shadowsocks",
-  "method": "chacha20-ietf-poly1305",
-  "password": "ojV2k2lRwuNm5thlsvd0wV"
+  "attach": "",
+  "method": "aes-256-cfb",
+  "password": "f8f7aCzcPKbsF8p3"
 },
 {
   "server": "212.102.53.198",
