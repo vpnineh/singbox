@@ -211,13 +211,13 @@
   "method": "aes-256-cfb",
   "password": "f8f7aCzcPKbsF8p3"
 },
-          {
-  "server": "series-a2-me.varzesh360.co",
-  "server_port": 443,
+ {
+  "server": "46.183.217.232",
+  "server_port": 989,
   "tag": "3",
   "type": "shadowsocks",
-  "method": "chacha20-ietf-poly1305",
-  "password": "Bog0ELmMM9DSxDdQ"
+  "method": "aes-256-cfb",
+  "password": "f8f7aCzcPKbsF8p3"
 },
     {
   "server": "80.92.204.106",
