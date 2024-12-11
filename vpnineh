@@ -191,22 +191,13 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "2",
-      "server": "time.is",
-      "server_port": 8080,
-      "uuid": "464d644c-9c10-4c02-9117-4c75b0c347cd",
-      "tls": {
-        "enabled": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2048",
-        "headers": {
-          "host": "wwwvisacomsg.mshcgb8q.workers.dev"
-        }
-      }
-    },
+  "server": "77.72.5.150",
+  "server_port": 989,
+  "tag": "2",
+  "type": "shadowsocks",
+  "method": "aes-256-cfb",
+  "password": "f8f7aCzcPKbsF8p3"
+},
           {
   "server": "www.speedtest.net",
   "server_port": 443,
