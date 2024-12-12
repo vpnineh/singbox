@@ -178,30 +178,14 @@
 			"idle_timeout": "9m0s"
 		},
 		 {
-  "server": "69.50.93.90",
-  "server_port": 443,
+  "server": "jp-am48-6.eqnode.net",
+  "server_port": 8081,
   "tag": "1",
-  "type": "vmess",
-  "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-  "security": "auto",
-  "alter_id": 0,
-  "tls": {
-    "enabled": true,
-    "server_name": "69.50.93.90",
-    "insecure": true,
-    "utls": {
-      "enabled": true
-    }
-  },
-  "transport": {
-    "type": "ws",
-    "path": "/linkvws",
-    "headers": {
-      "Host": [
-        "69.50.93.90"
-      ]
-    }
-  }
+  "type": "shadowsocksr",
+  "method": "aes-256-cfb",
+  "password": "eAokbaDN6",
+  "obfs": "tls1.2_ticket_auth",
+  "protocol": "origin"
 },
     {
   "server": "77.72.5.150",
