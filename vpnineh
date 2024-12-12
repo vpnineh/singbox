@@ -236,16 +236,15 @@
   "password": "HSZuyJQcWe8dxNdF"
 },
 {
-  "server": "23.162.200.227",
+  "server": "104.19.253.60",
   "server_port": 443,
   "tag": "6",
-  "type": "vmess",
-  "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-  "security": "auto",
-  "alter_id": 0,
+  "type": "vless",
+  "uuid": "7a38435b-f322-4b06-87b0-d7cb0c04c907",
+  "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "23.162.200.227",
+    "server_name": "FALCuNaRGo.E18061F38a.WORkErS.deV",
     "insecure": true,
     "utls": {
       "enabled": true
@@ -253,12 +252,14 @@
   },
   "transport": {
     "type": "ws",
-    "path": "/linkvws",
+    "path": "/DU-7-v-InqDKABjE",
     "headers": {
       "Host": [
-        "23.162.200.227"
+        "fALcUnargO.E18061F38A.woRkERs.Dev"
       ]
-    }
+    },
+    "max_early_data": 2048,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
@@ -292,29 +293,34 @@
   }
 },
 {
-  "server": "23.162.200.227",
-  "server_port": 443,
+  "server": "188.114.96.3",
+  "server_port": 8443,
   "tag": "8",
-  "type": "vmess",
-  "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-  "security": "auto",
-  "alter_id": 0,
+  "type": "vless",
+  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "packet_encoding": "xudp",
   "tls": {
     "enabled": true,
-    "server_name": "23.162.200.227",
+    "server_name": "wIN.sAmImOgHadSI.WORKERS.deV",
     "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
     "utls": {
-      "enabled": true
+      "enabled": true,
+      "fingerprint": "chrome"
     }
   },
   "transport": {
     "type": "ws",
-    "path": "/linkvws",
+    "path": "/AJDZ9n2geoCXTEVC/MTA0LjI1LjYyLjE1Nw==",
     "headers": {
       "Host": [
-        "23.162.200.227"
+        "wIn.sAmImOGhAdSI.WoRKERs.DeV"
       ]
-    }
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
   }
 },
 {
@@ -350,12 +356,12 @@
   "password": "f8f7aCzcPKbsF8p3"
 },
 {
-  "server": "138.186.142.4",
-  "server_port": 989,
+  "server": "series-a2-mec.samanehha.co",
+  "server_port": 443,
   "tag": "13",
   "type": "shadowsocks",
-  "method": "aes-256-cfb",
-  "password": "f8f7aCzcPKbsF8p3"
+  "method": "chacha20-ietf-poly1305",
+  "password": "u17T3BvpYaaiuW2c"
 },
 {
   "server": "77.72.5.113",
