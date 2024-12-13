@@ -178,14 +178,12 @@
 			"idle_timeout": "9m0s"
 		},
 		 {
-  "server": "jp-am48-6.eqnode.net",
-  "server_port": 8081,
+  "server": "series-a2-me.varzesh360.co",
+  "server_port": 443,
   "tag": "1",
-  "type": "shadowsocksr",
-  "method": "aes-256-cfb",
-  "password": "eAokbaDN6",
-  "obfs": "tls1.2_ticket_auth",
-  "protocol": "origin"
+  "type": "shadowsocks",
+  "method": "chacha20-ietf-poly1305",
+  "password": "Bog0ELmMM9DSxDdQ"
 },
     {
   "server": "77.72.5.150",
