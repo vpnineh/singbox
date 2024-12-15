@@ -245,22 +245,12 @@
   }
 },
 {
-  "server": "104.16.61.8",
-  "server_port": 2086,
+  "server": "138.186.142.4",
+  "server_port": 989,
   "tag": "7",
-  "type": "vmess",
-  "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
-  "security": "auto",
-  "alter_id": 0,
-  "transport": {
-    "type": "ws",
-    "path": "/linde06.indiavideo.sbs/linkws",
-    "headers": {
-      "Host": [
-        "throbbing-shape-90d7.hite-nomade.workers.dev"
-      ]
-    }
-  }
+  "type": "shadowsocks",
+  "method": "aes-256-cfb",
+  "password": "f8f7aCzcPKbsF8p3"
 },
 {
   "server": "188.114.96.3",
