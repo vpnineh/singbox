@@ -185,13 +185,13 @@
   "method": "2022-blake3-chacha20-poly1305",
   "password": "Jh8U1dgQMJBDplfekBjDeGXHHfrYTT1ftWWvCNG5UPY="
 },
-    {
-  "server": "77.72.5.150",
-  "server_port": 989,
+   {
+  "server": "series-a2-mec.varzesh360.co",
+  "server_port": 443,
   "tag": "2",
   "type": "shadowsocks",
-  "method": "aes-256-cfb",
-  "password": "f8f7aCzcPKbsF8p3"
+  "method": "chacha20-ietf-poly1305",
+  "password": "u17T3BvpYaaiuW2c"
 },
  {
   "server": "46.183.217.232",
