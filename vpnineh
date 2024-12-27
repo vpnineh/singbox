@@ -241,18 +241,6 @@
   "method": "chacha20-ietf-poly1305",
   "password": "d3837224ed465f00"
 },
-  "transport": {
-    "type": "ws",
-    "path": "/AJDZ9n2geoCXTEVC/MTA0LjI1LjYyLjE1Nw==",
-    "headers": {
-      "Host": [
-        "wIn.sAmImOGhAdSI.WoRKERs.DeV"
-      ]
-    },
-    "max_early_data": 2560,
-    "early_data_header_name": "Sec-WebSocket-Protocol"
-  }
-},
 {
   "server": "77.72.5.150",
   "server_port": 989,
