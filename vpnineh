@@ -177,7 +177,7 @@
 			"tolerance": 1,
 			"idle_timeout": "9m0s"
 		},
-		 {
+{
   "server": "war.ssvpnapp.win",
   "server_port": 57456,
   "tag": "1",
@@ -234,12 +234,35 @@
   "password": "f8f7aCzcPKbsF8p3"
 },
 {
-  "server": "45.144.48.63",
-  "server_port": 57456,
+  "server": "188.114.96.3",
+  "server_port": 8443,
   "tag": "8",
-  "type": "shadowsocks",
-  "method": "chacha20-ietf-poly1305",
-  "password": "d3837224ed465f00"
+  "type": "vless",
+  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+  "packet_encoding": "xudp",
+  "tls": {
+    "enabled": true,
+    "server_name": "wIN.sAmImOgHadSI.WORKERS.deV",
+    "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
+    "utls": {
+      "enabled": true,
+      "fingerprint": "chrome"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/AJDZ9n2geoCXTEVC/MTA0LjI1LjYyLjE1Nw==",
+    "headers": {
+      "Host": [
+        "wIn.sAmImOGhAdSI.WoRKERs.DeV"
+      ]
+    },
+    "max_early_data": 2560,
+    "early_data_header_name": "Sec-WebSocket-Protocol"
+  }
 },
 {
   "server": "77.72.5.150",
