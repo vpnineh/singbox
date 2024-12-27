@@ -182,7 +182,6 @@
   "server_port": 57456,
   "tag": "1",
   "type": "shadowsocks",
-  "attach": "",
   "method": "chacha20-ietf-poly1305",
   "password": "d3837224ed465f00"
 },
@@ -239,7 +238,6 @@
   "server_port": 57456,
   "tag": "8",
   "type": "shadowsocks",
-  "attach": "",
   "method": "chacha20-ietf-poly1305",
   "password": "d3837224ed465f00"
 },
