@@ -178,12 +178,13 @@
 			"idle_timeout": "9m0s"
 		},
 		 {
-  "server": "homa.cybsecguru.com",
-  "server_port": 44440,
+  "server": "war.ssvpnapp.win",
+  "server_port": 57456,
   "tag": "1",
   "type": "shadowsocks",
-  "method": "2022-blake3-chacha20-poly1305",
-  "password": "Jh8U1dgQMJBDplfekBjDeGXHHfrYTT1ftWWvCNG5UPY="
+  "attach": "",
+  "method": "chacha20-ietf-poly1305",
+  "password": "d3837224ed465f00"
 },
    {
   "server": "series-a2-mec.varzesh360.co",
@@ -234,24 +235,14 @@
   "password": "f8f7aCzcPKbsF8p3"
 },
 {
-  "server": "188.114.96.3",
-  "server_port": 8443,
+  "server": "45.144.48.63",
+  "server_port": 57456,
   "tag": "8",
-  "type": "vless",
-  "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-  "packet_encoding": "xudp",
-  "tls": {
-    "enabled": true,
-    "server_name": "wIN.sAmImOgHadSI.WORKERS.deV",
-    "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
-    "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
-    }
-  },
+  "type": "shadowsocks",
+  "attach": "",
+  "method": "chacha20-ietf-poly1305",
+  "password": "d3837224ed465f00"
+},
   "transport": {
     "type": "ws",
     "path": "/AJDZ9n2geoCXTEVC/MTA0LjI1LjYyLjE1Nw==",
