@@ -117,7 +117,16 @@
         "Best Latency",
         "🇸🇪 1",
         "🇸🇪 2",
-        "🇸🇪 3"
+        "🇸🇪 3",
+        "1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
       ]
     },
     {
@@ -126,7 +135,16 @@
       "outbounds": [
         "🇸🇪 1",
         "🇸🇪 2",
-        "🇸🇪 3"
+        "🇸🇪 3",
+        "1",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -181,6 +199,246 @@
       },
       "type": "hysteria2"
     },
+ {
+            "type": "vless",
+            "server": "2e9bc800.new-bpb-worker-panel-drk.pages.dev",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2e9BC800.neW-BpB-woRKer-paNEl-drk.PagES.dEv",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2E9Bc800.new-BpB-WOrKER-PaneL-dRK.PagES.DEV"
+                },
+                "path": "/Yddy9yF5pmP94mr6",
+                "type": "ws"
+            },
+            "tag": "1"
+        },
+        {
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2e9BC800.NEw-BPb-WoRkeR-pAnel-dRK.pagES.DeV",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2E9BC800.NeW-Bpb-wOrKeR-pANeL-dRk.PagEs.Dev"
+                },
+                "path": "/Gex7hw2wMWIEXQqF",
+                "type": "ws"
+            },
+            "tag": "2"
+        },
+        {
+            "type": "vless",
+            "server": "172.66.47.66",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2e9Bc800.NEW-bpb-worKer-PAneL-dRk.PagES.Dev",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2e9bc800.NeW-BPb-wOrkeR-PanEL-Drk.PaGes.DEV"
+                },
+                "path": "/6A5NXzEv1Kl59EZL",
+                "type": "ws"
+            },
+            "tag": "3"
+        },
+        {
+            "type": "vless",
+            "server": "172.66.44.190",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2e9bc800.nEW-BPb-WoRKer-pAneL-drk.pAgeS.dEV",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2e9bC800.NeW-bPb-wOrkER-panEl-drk.PAGES.Dev"
+                },
+                "path": "/oOIy6y5Xz72RzWDP",
+                "type": "ws"
+            },
+            "tag": "4"
+        },
+        {
+            "type": "vless",
+            "server": "[2606:4700:310c::ac42:2cbe]",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2E9Bc800.NEW-BPB-wORKER-PANel-drk.pAgES.DEv",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2E9Bc800.new-bpB-wOrkeR-pAneL-DRK.paGEs.Dev"
+                },
+                "path": "/i5oPXVm3TLAHUBUV",
+                "type": "ws"
+            },
+            "tag": "5"
+        },
+        {
+            "type": "vless",
+            "server": "[2606:4700:310c::ac42:2f42]",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2e9bc800.New-BPb-WorKER-panel-dRK.PAGES.dEv",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2e9Bc800.New-bpB-workEr-pAnEL-DrK.PagES.DEV"
+                },
+                "path": "/I6vKk4TLfNrLHCzN",
+                "type": "ws"
+            },
+            "tag": "6"
+        },
+        {
+            "type": "vless",
+            "server": "zula.ir",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2e9bC800.New-BpB-wOrKeR-pANeL-dRk.PAGeS.DEV",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2e9bc800.NEW-bpb-WOrker-panEl-drK.PAGeS.DEv"
+                },
+                "path": "/C7sBAPc6977cNV9e",
+                "type": "ws"
+            },
+            "tag": "7"
+        },
+        {
+            "type": "vless",
+            "server": "tgju.org",
+            "server_port": 443,
+            "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+            "domain_strategy": "prefer_ipv6",
+            "packet_encoding": "",
+            "tls": {
+                "alpn": [
+                    "http/1.1"
+                ],
+                "enabled": true,
+                "insecure": false,
+                "server_name": "2E9bc800.nEw-BPB-WORkeR-PaNEL-DrK.PagEs.Dev",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "randomized"
+                }
+            },
+            "transport": {
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "max_early_data": 2560,
+                "headers": {
+                    "Host": "2e9BC800.nEw-bPB-WORkeR-pANEL-drK.pAGEs.dev"
+                },
+                "path": "/h8ZKFZAtEnQQ1u3N",
+                "type": "ws"
+            },
+            "tag": "8"
+        },
     {
       "type": "direct",
       "tag": "direct"
