@@ -1,54 +1,79 @@
 {
   "dns": {
-    "final": "local-dns",
-    "rules": [
-      {
-        "clash_mode": "Global",
-        "server": "proxy-dns",
-        "source_ip_cidr": [
-          "172.19.0.0/30"
-        ]
-      },
-      {
-        "server": "proxy-dns",
-        "source_ip_cidr": [
-          "172.19.0.0/30"
-        ]
-      },
-      {
-        "clash_mode": "Direct",
-        "server": "direct-dns"
-      },
-      {
-        "rule_set": [
-          "geosite-ir"
-        ],
-        "server": "direct-dns"
-      }
-    ],
     "servers": [
       {
+        "tag": "Internet-dns",
+        "address": "https://94.140.14.14/dns-query",
+        "strategy": "prefer_ipv4",
+        "detour": "Internet"
+      },
+      {
+        "tag": "Best Latency-dns",
+        "address": "https://94.140.14.14/dns-query",
+        "strategy": "prefer_ipv4",
+        "detour": "Best Latency"
+      },
+      {
+        "tag": "direct-dns",
         "address": "tcp://8.8.8.8",
-        "address_resolver": "local-dns",
-        "detour": "proxy",
-        "tag": "proxy-dns"
+        "strategy": "prefer_ipv4",
+        "detour": "direct"
       },
       {
-        "address": "local",
-        "detour": "direct",
-        "tag": "local-dns"
-      },
-      {
-        "address": "rcode://success",
-        "tag": "block"
-      },
-      {
-        "address": "tcp://8.8.8.8",
-        "detour": "direct",
-        "tag": "direct-dns"
+        "tag": "block-dns",
+        "address": "rcode://success"
       }
     ],
-    "strategy": "prefer_ipv4"
+    "rules": [
+      {
+        "domain": [
+          "homa.cybsecguru.com",
+          "all-v6.cybsecguru.com"
+        ],
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "domain_regex": [
+          ".*\\.ir$",
+          ".*\\.xn--mgba3a4f16a$"
+        ],
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "Internet",
+        "server": "Internet-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "Best Latency",
+        "server": "Best Latency-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "direct",
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "any",
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "inbound": "tun-in",
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "Best Latency-dns",
+        "disable_cache": true,
+        "rewrite_ttl": 20
+      }
+    ],
+    "strategy": "prefer_ipv4",
+    "independent_cache": true
   },
   "inbounds": [
     {
