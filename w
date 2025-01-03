@@ -84,11 +84,11 @@
       "outbounds": [
         "auto",
         "direct",
-        "🇸🇪-VPNineh1",
-        "🇸🇪-VPNineh3",
-        "🇸🇪-VPNineh4",
-        "🇸🇪-VPNineh5",
-        "🇸🇪-VPNineh6"
+        "🇱🇹-VPNineh1",
+        "🇱🇹-VPNineh3",
+        "🇱🇹-VPNineh4",
+        "🇱🇹-VPNineh5",
+        "🇱🇹-VPNineh6"
       ],
       "tag": "proxy",
       "type": "selector"
@@ -96,11 +96,11 @@
     {
       "interval": "10m",
       "outbounds": [
-        "🇸🇪-VPNineh1",
-        "🇸🇪-VPNineh3",
-        "🇸🇪-VPNineh4",
-        "🇸🇪-VPNineh5",
-        "🇸🇪-VPNineh6"
+        "🇱🇹-VPNineh1",
+        "🇱🇹-VPNineh3",
+        "🇱🇹-VPNineh4",
+        "🇱🇹-VPNineh5",
+        "🇱🇹-VPNineh6"
       ],
       "tag": "auto",
       "tolerance": 50,
@@ -127,7 +127,7 @@
       "password": "5a072771500faceb",
       "server": "150.241.77.174",
       "server_port": 33344,
-      "tag": "🇸🇪-VPNineh1",
+      "tag": "🇱🇹-VPNineh1",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -144,7 +144,7 @@
       "password": "36a78e623720090d",
       "server": "150.241.77.178",
       "server_port": 22233,
-      "tag": "🇸🇪-VPNineh3",
+      "tag": "🇱🇹-VPNineh3",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -160,7 +160,7 @@
       "password": "36a78e623720090d",
       "server": "2a0b:4140:e6c6::2",
       "server_port": 22233,
-      "tag": "🇸🇪-VPNineh4",
+      "tag": "🇱🇹-VPNineh4",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -176,7 +176,7 @@
       "password": "c76f08e20fb6368b",
       "server": "150.241.77.182",
       "server_port": 11122,
-      "tag": "🇸🇪-VPNineh5",
+      "tag": "🇱🇹-VPNineh5",
       "tls": {
         "enabled": true,
         "insecure": true,
@@ -192,7 +192,7 @@
       "password": "c76f08e20fb6368b",
       "server": "2a0b:4140:e6c7::2",
       "server_port": 11122,
-      "tag": "🇸🇪-VPNineh6",
+      "tag": "🇱🇹-VPNineh6",
       "tls": {
         "enabled": true,
         "insecure": true,
