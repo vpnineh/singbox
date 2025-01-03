@@ -172,8 +172,9 @@
         "password": "YTVjNWFjYzExOTIzNzQyOQ=="
       },
       "tls": {
-        "enabled": false,
+        "enabled": true,
         "insecure": true,
+        "server_name": "www.bing.com"
       },
       "password": "1486bfa6-1c4c-456d-b055-c9760f911385"
     },
