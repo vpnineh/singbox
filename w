@@ -1,4 +1,3 @@
-
 {
     "log": {
       "level": "warn",
@@ -104,7 +103,7 @@
           " 🇺🇲",
           " 🇳🇱 2",
           " 🇯🇵 2",
-          " 🇺🇲 2"
+          " 🗽"
         ],
         "default": "auto"
       },
@@ -118,7 +117,7 @@
           " 🇺🇲",
           " 🇳🇱 2",
           " 🇯🇵 2",
-          " 🇺🇲 2"
+          " 🗽"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m0s"
@@ -130,16 +129,15 @@
           "172.16.0.2/24",
           "2606:4700:110:8056:6ec9:563a:d8e7:5097/128"
         ],
-        "private_key": "AN/vE11+V8r25aGti20+ZPv3LfWckXfzGJlDQuxpCkc=",
-        "server": "162.159.192.171",
-        "server_port": 864,
-        "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+        "private_key": "MCxYQIHkEGeB/FGvd2/+rCJEvwcYN1e7hF6vtJaauH4\u003d",
+        "server": "2606:4700:d0::1e55:38fd:b29e:4ced",
+        "server_port": 0,
+        "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo\u003d",
         "reserved": "bfY2",
-      "mtu": 1306,
-      "fake_packets_mode": "m4",
-      "fake_packets": "40-80",
-      "fake_packets_size": "40-100",
-      "fake_packets_delay": "4-8"
+        "mtu": 1330,
+        "fake_packets": "5-10",
+        "fake_packets_size": "40-100",
+        "fake_packets_delay": "20-250"
       },
       {
         "type": "wireguard",
@@ -208,7 +206,7 @@
       },
       {
         "type": "wireguard",
-        "tag": " 🇺🇲 2",
+        "tag": " 🗽",
         "detour": "ÐΛɌ₭ᑎΞ𐒡𐒡",
         "local_address": [
           "10.2.0.2/32"
