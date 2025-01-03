@@ -1,162 +1,145 @@
 {
-  "log": {
-    "disabled": true,
-    "level": "panic"
-  },
   "dns": {
-    "servers": [
-      {
-        "tag": "Internet-dns",
-        "address": "https://94.140.14.14/dns-query",
-        "strategy": "prefer_ipv4",
-        "detour": "Internet"
-      },
-      {
-        "tag": "Best Latency-dns",
-        "address": "https://94.140.14.14/dns-query",
-        "strategy": "prefer_ipv4",
-        "detour": "Best Latency"
-      },
-      {
-        "tag": "direct-dns",
-        "address": "tcp://8.8.8.8",
-        "strategy": "prefer_ipv4",
-        "detour": "direct"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success"
-      }
-    ],
+    "final": "local-dns",
     "rules": [
       {
-        "domain": [
-          "homa.cybsecguru.com",
-          "all-v6.cybsecguru.com"
+        "clash_mode": "Global",
+        "server": "proxy-dns",
+        "source_ip_cidr": [
+          "172.19.0.0/30"
+        ]
+      },
+      {
+        "server": "proxy-dns",
+        "source_ip_cidr": [
+          "172.19.0.0/30"
+        ]
+      },
+      {
+        "clash_mode": "Direct",
+        "server": "direct-dns"
+      },
+      {
+        "rule_set": [
+          "geosite-ir"
         ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "domain_regex": [
-          ".*\\.ir$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "Internet",
-        "server": "Internet-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "Best Latency",
-        "server": "Best Latency-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "direct",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "any",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "inbound": "tun-in",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "Best Latency-dns",
-        "disable_cache": true,
-        "rewrite_ttl": 20
+        "server": "direct-dns"
       }
     ],
-    "strategy": "prefer_ipv4",
-    "independent_cache": true
+    "servers": [
+      {
+        "address": "tcp://8.8.8.8",
+        "address_resolver": "local-dns",
+        "detour": "proxy",
+        "tag": "proxy-dns"
+      },
+      {
+        "address": "local",
+        "detour": "direct",
+        "tag": "local-dns"
+      },
+      {
+        "address": "rcode://success",
+        "tag": "block"
+      },
+      {
+        "address": "tcp://8.8.8.8",
+        "detour": "direct",
+        "tag": "direct-dns"
+      }
+    ],
+    "strategy": "prefer_ipv4"
   },
   "inbounds": [
     {
-      "type": "tun",
-      "tag": "tun-in",
-      "mtu": 9000,
       "address": [
-        "172.18.0.1/30",
+        "172.19.0.1/30",
         "fdfe:dcba:9876::1/126"
       ],
       "auto_route": true,
-      "strict_route": true,
-      "route_exclude_address": [
-        "192.168.0.0/16",
-        "fc00::/7"
-      ],
-      "stack": "mixed",
+      "endpoint_independent_nat": false,
+      "mtu": 9000,
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      },
       "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
+      "stack": "system",
+      "strict_route": false,
+      "type": "tun"
     },
     {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 4040,
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
       "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
+      "type": "mixed",
+      "users": []
     }
   ],
   "outbounds": [
     {
-      "type": "selector",
-      "tag": "Internet",
       "outbounds": [
-        "Best Latency",
-        "🇸🇪 A",
-        "🇸🇪 B",
-        "🇸🇪 C",
-        "🇸🇪 D"
-      ]
+        "auto",
+        "direct",
+        "🇱🇹-VPNineh1",
+        "🇱🇹-VPNineh2",
+        "🇱🇹-VPNineh3",
+        "🇱🇹-VPNineh4",
+        "🇱🇹-VPNineh5",
+        "🇱🇹-VPNineh6"
+      ],
+      "tag": "proxy",
+      "type": "selector"
     },
     {
-      "type": "hysteria2",
-      "tag": "🇸🇪 A",
-      "server": "150.241.77.178",
-      "server_port": 22233,
+      "interval": "10m",
+      "outbounds": [
+        "🇱🇹-VPNineh1",
+        "🇱🇹-VPNineh2",
+        "🇱🇹-VPNineh3",
+        "🇱🇹-VPNineh4",
+        "🇱🇹-VPNineh5",
+        "🇱🇹-VPNineh6"
+      ],
+      "tag": "auto",
+      "tolerance": 50,
+      "type": "urltest",
+      "url": "http://www.gstatic.com/generate_204"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
       "obfs": {
-        "type": "salamander",
-        "password": "108ecb57dc7a7694"
+        "password": "f64fc97d84ec14cf",
+        "type": "salamander"
       },
-      "password": "36a78e623720090d"
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇸🇪 B",
-      "server": "150.241.77.182",
-      "server_port": 11122,
-      "obfs": {
-        "type": "salamander",
-        "password": "64da92df31fc63c1"
-      },
-      "password": "c76f08e20fb6368b"
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇸🇪 C",
+      "password": "5a072771500faceb",
       "server": "150.241.77.174",
       "server_port": 33344,
-      "obfs": {
-        "type": "salamander",
-        "password": "f64fc97d84ec14cf"
+      "tag": "🇱🇹-VPNineh1",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
       },
-      "password": "5a072771500faceb"
+      "type": "hysteria2"
     },
     {
       "type": "hysteria2",
-      "tag": "🇸🇪 D",
+      "tag": "🇱🇹-VPNineh2",
       "server": "172.233.81.57",
       "server_port": 443,
       "obfs": {
@@ -166,73 +149,122 @@
       "password": "1486bfa6-1c4c-456d-b055-c9760f911385"
     },
     {
-      "type": "direct",
-      "tag": "direct"
+      "obfs": {
+        "password": "108ecb57dc7a7694",
+        "type": "salamander"
+      },
+      "password": "36a78e623720090d",
+      "server": "150.241.77.178",
+      "server_port": 22233,
+      "tag": "🇱🇹-VPNineh3",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
+      },
+      "type": "hysteria2"
     },
     {
-      "type": "block",
-      "tag": "block"
+      "obfs": {
+        "password": "108ecb57dc7a7694",
+        "type": "salamander"
+      },
+      "password": "36a78e623720090d",
+      "server": "2a0b:4140:e6c6::2",
+      "server_port": 22233,
+      "tag": "🇱🇹-VPNineh4",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
+      },
+      "type": "hysteria2"
     },
     {
-      "type": "dns",
-      "tag": "dns-out"
+      "obfs": {
+        "password": "64da92df31fc63c1",
+        "type": "salamander"
+      },
+      "password": "c76f08e20fb6368b",
+      "server": "150.241.77.182",
+      "server_port": 11122,
+      "tag": "🇱🇹-VPNineh5",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "obfs": {
+        "password": "64da92df31fc63c1",
+        "type": "salamander"
+      },
+      "password": "c76f08e20fb6368b",
+      "server": "2a0b:4140:e6c7::2",
+      "server_port": 11122,
+      "tag": "🇱🇹-VPNineh6",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
+      },
+      "type": "hysteria2"
     }
   ],
   "route": {
-    "rules": [
+    "auto_detect_interface": true,
+    "final": "proxy",
+    "rule_set": [
       {
-        "port": 53,
-        "outbound": "dns-out"
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-ads",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
       },
       {
-        "network": "tcp",
-        "port": 853,
-        "outbound": "block"
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-ir",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
       },
       {
-        "network": "udp",
-        "port": [
-          443,
-          853
-        ],
-        "outbound": "block"
-      },
-      {
-        "protocol": "stun",
-        "outbound": "block"
-      },
-      {
-        "source_ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "outbound": "block"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "domain_regex": [
-          ".*\\.i﻿r$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
-        "outbound": "direct"
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geoip-ir",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
       }
     ],
-    "final": "Internet",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "saeed"
-    }
+    "rules": [
+      {
+        "clash_mode": "Direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "proxy"
+      },
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "outbound": "direct",
+        "rule_set": [
+          "geoip-ir",
+          "geosite-ir"
+        ]
+      },
+      {
+        "outbound": "block",
+        "rule_set": [
+          "geosite-ads"
+        ]
+      }
+    ]
   }
 }
