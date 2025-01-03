@@ -4,129 +4,92 @@
     "level": "panic"
   },
   "dns": {
-    "servers": [
+      "servers": [
+        {
+          "tag": "dns-remote",
+          "address": "tcp://8.8.4.4",
+          "address_resolver": "dns-direct"
+        },
+        {
+          "tag": "dns-trick-direct",
+          "address": "https://sky.rethinkdns.com/",
+          "detour": "direct-fragment"
+        },
+        {
+          "tag": "dns-direct",
+          "address": "tcp://8.8.4.4",
+          "address_resolver": "dns-local",
+          "detour": "direct"
+        },
+        {
+          "tag": "dns-local",
+          "address": "local",
+          "detour": "direct"
+        },
+        {
+          "tag": "dns-block",
+          "address": "rcode://success"
+        }
+      ],
+      "rules": [
+        {
+          "domain_suffix": ".ir",
+          "geosite": "ir",
+          "server": "dns-direct"
+        },
+        {
+          "domain": "cp.cloudflare.com",
+          "server": "dns-remote",
+          "rewrite_ttl": 3000
+        }
+      ],
+      "final": "dns-remote",
+      "static_ips": {
+        "sky.rethinkdns.com": [
+          "188.114.96.3",
+          "188.114.97.3",
+          "2a06:98c1:3120::3",
+          "2a06:98c1:3121::3",
+          "104.18.203.232",
+          "104.18.202.232",
+          "188.114.96.6",
+          "188.114.97.6",
+          "2a06:98c1:3121::3",
+          "2a06:98c1:3120::3"
+        ]
+      },
+      "independent_cache": true
+    },
+    "inbounds": [
       {
-        "tag": "Internet-dns",
-        "address": "udp://1.1.1.1",
-        "strategy": "prefer_ipv4",
-        "detour": "Internet"
+        "type": "tun",
+        "tag": "tun-in",
+        "mtu": 9000,
+        "inet4_address": "172.19.0.1/28",
+        "inet6_address": "fdfe:dcba:9876::1/126",
+        "auto_route": true,
+        "strict_route": true,
+        "endpoint_independent_nat": true,
+        "sniff": true,
+        "sniff_override_destination": true
       },
       {
-        "tag": "Best Latency-dns",
-        "address": "fakeip",
-        "strategy": "prefer_ipv4",
-        "detour": "Best Latency"
+        "type": "mixed",
+        "tag": "mixed-in",
+        "listen": "127.0.0.1",
+        "listen_port": 2334,
+        "sniff": true,
+        "sniff_override_destination": true
       },
       {
-        "tag": "direct-dns",
-        "address": "udp://1.1.1.1",
-        "strategy": "prefer_ipv4",
-        "detour": "direct"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success"
+        "type": "direct",
+        "tag": "dns-in",
+        "listen": "127.0.0.1",
+        "listen_port": 6440,
+        "override_address": "1.1.1.1",
+        "override_port": 53
       }
     ],
-    "rules": [
-      {
-        "domain_suffix": [
-          "all-v4.dgi000.store",
-          "all-v6.dgi000.store"
-        ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "domain": "www.gstatic.com",
-        "server": "Internet-dns",
-        "rewrite_ttl": 3000
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "server": "block-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "domain_regex": [
-          ".*\\.ir$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "rule_set": "geosite-ir",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "Internet",
-        "server": "Internet-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "Best Latency",
-        "server": "Best Latency-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "direct",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "any",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      }
-    ],
-    "final": "Internet-dns",
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "strategy": "prefer_ipv4",
-    "disable_expire": true
-  },
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "tun0",
-      "mtu": 9000,
-      "inet4_address": "172.19.0.1/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
-      "auto_route": true,
-      "strict_route": true,
-      "stack": "mixed",
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 2080,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
-    },
-    {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "0.0.0.0",
-      "listen_port": 6450,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4",
-      "override_address": "8.8.8.8",
-      "override_port": 53
-    }
-  ],
 "outbounds": [
 		{
 			"type": "selector",
