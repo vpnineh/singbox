@@ -117,9 +117,7 @@
         "Best Latency",
         "🇸🇪 1",
         "🇸🇪 2",
-        "🇸🇪 3",
-        "Warp",
-        "WIW"
+        "🇸🇪 3"
       ]
     },
     {
@@ -128,43 +126,12 @@
       "outbounds": [
         "🇸🇪 1",
         "🇸🇪 2",
-        "🇸🇪 3",
-        "Warp",
-        "WIW"
+        "🇸🇪 3"
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "3m0s",
       "tolerance": 1,
       "idle_timeout": "9m0s"
-    },
-    {
-      "type": "wireguard",
-      "tag": "Warp",
-      "local_address": [
-        "172.16.0.2/24",
-        "2606:4700:110:8566:aded:93b9:60a9:1a6c/128"
-      ],
-      "private_key": "cAIoqLoYoS8WOBq3w7Qoz8BQTHLyMJUbJhwOxkDmAU0=",
-      "server": "188.114.97.170",
-      "server_port": 1002,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "AAAA",
-      "mtu": 1330
-    },
-    {
-      "type": "wireguard",
-      "tag": "WIW",
-      "detour": "Warp",
-      "local_address": [
-        "172.16.0.2/24",
-        "2606:4700:110:8710:cb04:5241:3490:26fa/128"
-      ],
-      "private_key": "aD1X77cNa/W8Qhi41DawRZjNLT88mqvBX6TGwm0oc2E=",
-      "server": "188.114.97.170",
-      "server_port": 5956,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "w4uU",
-      "mtu": 1280
     },
     {
       "obfs": {
