@@ -85,6 +85,7 @@
         "auto",
         "direct",
         "🇱🇹-VPNineh1",
+        "🇱🇹-VPNineh2",
         "🇱🇹-VPNineh3",
         "🇱🇹-VPNineh4",
         "🇱🇹-VPNineh5",
@@ -97,6 +98,7 @@
       "interval": "10m",
       "outbounds": [
         "🇱🇹-VPNineh1",
+        "🇱🇹-VPNineh2",
         "🇱🇹-VPNineh3",
         "🇱🇹-VPNineh4",
         "🇱🇹-VPNineh5",
@@ -135,7 +137,21 @@
       },
       "type": "hysteria2"
     },
-    
+    {
+      "type": "hysteria2",
+      "tag": "🇱🇹-VPNineh2",
+      "server": "172.233.81.57",
+      "server_port": 443,
+      "obfs": {
+        "type": "salamander",
+        "password": "YTVjNWFjYzExOTIzNzQyOQ=="
+      },
+      "tls": {
+        "enabled": false,
+        "insecure": true,
+      },
+      "password": "1486bfa6-1c4c-456d-b055-c9760f911385"
+    },
     {
       "obfs": {
         "password": "108ecb57dc7a7694",
