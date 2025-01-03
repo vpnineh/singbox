@@ -271,30 +271,58 @@
     ],
     "rules": [
       {
-        "clash_mode": "Direct",
+        "port": 53,
+        "outbound": "dns-out"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "outbound": "block"
+      },
+      {
+        "network": "udp",
+        "port": [
+          443,
+          853
+        ],
+        "outbound": "block"
+      },
+      {
+        "protocol": "stun",
+        "outbound": "block"
+      },
+      {
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "outbound": "block"
+      },
+      {
+        "ip_is_private": true,
         "outbound": "direct"
       },
       {
-        "clash_mode": "Global",
-        "outbound": "proxy"
-      },
-      {
-        "outbound": "dns-out",
-        "protocol": "dns"
-      },
-      {
-        "outbound": "direct",
-        "rule_set": [
-          "geoip-ir",
-          "geosite-ir"
-        ]
-      },
-      {
-        "outbound": "block",
-        "rule_set": [
-          "geosite-ads"
-        ]
+        "domain_regex": [
+          ".*\\.i﻿r$",
+          ".*\\.xn--mgba3a4f16a$"
+        ],
+        "outbound": "direct"
       }
-    ]
+    ],
+    "final": "Internet",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "cache_id": "saeed"
+    }
   }
 }
