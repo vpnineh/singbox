@@ -140,6 +140,11 @@
     {
       "type": "hysteria2",
       "tag": "🇱🇹-VPNineh2",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
+      },
       "server": "172.233.81.57",
       "server_port": 443,
       "obfs": {
