@@ -186,12 +186,22 @@
   "password": "d3837224ed465f00"
 },
    {
-  "server": "series-a2-mec.varzesh360.co",
-  "server_port": 443,
+  "type": "wireguard",
   "tag": "2",
-  "type": "shadowsocks",
-  "method": "chacha20-ietf-poly1305",
-  "password": "u17T3BvpYaaiuW2c"
+  "local_address": [
+    "172.16.0.2/24",
+    "2606:4700:110:8566:aded:93b9:60a9:1a6c/128"
+  ],
+  "private_key": "cAIoqLoYoS8WOBq3w7Qoz8BQTHLyMJUbJhwOxkDmAU0=",
+  "server": "188.114.97.170",
+  "server_port": 1002,
+  "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+  "reserved": "AAAA",
+  "mtu": 1330,
+  "fake_packets": "40-80",
+  "fake_packets_size": "40-100",
+  "fake_packets_delay": "4-8",
+  "fake_packets_mode": "m4"
 },
  {
   "server": "46.183.217.232",
