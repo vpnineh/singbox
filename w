@@ -104,24 +104,7 @@
       "tolerance": 1,
       "idle_timeout": "30m0s"
     },
-    {
-      "type": "wireguard",
-      "tag": "m4 § 0",
-      "local_address": [
-        "172.16.0.2/24",
-        "2606:4700:110:8566:aded:93b9:60a9:1a6c/128"
-      ],
-      "private_key": "cAIoqLoYoS8WOBq3w7Qoz8BQTHLyMJUbJhwOxkDmAU0=",
-      "server": "188.114.97.170",
-      "server_port": 1002,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "AAAA",
-      "mtu": 1330,
-      "fake_packets": "40-80",
-      "fake_packets_size": "40-100",
-      "fake_packets_delay": "4-8",
-      "fake_packets_mode": "m4"
-    },
+
     {
       "type": "wireguard",
       "tag": "WiW ✅",
