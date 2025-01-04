@@ -102,8 +102,8 @@
     "type": "salamander"
   },
   "tls": {
-    "enabled": false,
-    "server_name": "www.google.com",
+    "enabled": true,
+    "server_name": "www.google.c",
     "insecure": true
   }
 },
