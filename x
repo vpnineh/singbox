@@ -51,17 +51,7 @@
       }
     ],
     "final": "dns-remote",
-    "static_ips": {
-      "qOYPUA5rddvEY8m0DcO7": [
-        "2606:4700:d1:0:ad03:bb3c:a842:f38c",
-        "188.114.96.44"
-      ],
-      "sky.rethinkdns.com": [
-        "104.17.147.22",
-        "104.17.148.22",
-        "188.114.96.6",
-        "188.114.97.6"
-      ]
+ 
     },
     "independent_cache": true
   },
