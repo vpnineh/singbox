@@ -79,7 +79,7 @@
             "outbounds": [
                 "Farbod"
             ],
-            "default": "\ud83d\udfe1Berlin",
+            "default": "Farbod",
             "interrupt_exist_connections": false
         },
         {
