@@ -102,7 +102,7 @@
     "type": "salamander"
   },
   "tls": {
-    "enabled": true,
+    "enabled": false,
     "server_name": "www.google.com",
     "insecure": true
   }
