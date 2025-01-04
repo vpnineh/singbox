@@ -7,7 +7,7 @@
     "servers": [
       {
         "tag": "Internet-dns",
-        "address": "tcp://94.140.14.14",
+        "address": "udp://1.1.1.1",
         "strategy": "prefer_ipv4",
         "detour": "Internet"
       },
@@ -19,7 +19,7 @@
       },
       {
         "tag": "direct-dns",
-        "address": "udp://8.8.8.8",
+        "address": "udp://1.1.1.1",
         "strategy": "prefer_ipv4",
         "detour": "direct"
       },
@@ -123,7 +123,7 @@
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "prefer_ipv4",
-      "override_address": "8.8.8.8",
+      "override_address": "1.1.1.1",
       "override_port": 53
     }
   ],
@@ -143,7 +143,7 @@
                         "Farbod"
 
 			],
-			"url": "http://www.google.com/generate_204",
+			"url": "http://www.gstatic.com/generate_204",
 			"interval": "3m0s",
 			"tolerance": 1,
 			"idle_timeout": "9m0s"
