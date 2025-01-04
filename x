@@ -1,174 +1,184 @@
 {
   "log": {
-    "level": "warn",
-    "output": "box.log",
-    "timestamp": true
+    "disabled": true,
+    "level": "panic"
   },
   "dns": {
     "servers": [
       {
-        "tag": "dns-remote",
-        "address": "udp://9.9.9.9",
-        "address_resolver": "dns-direct"
+        "tag": "Internet-dns",
+        "address": "tcp://94.140.14.14",
+        "strategy": "prefer_ipv4",
+        "detour": "Internet"
       },
       {
-        "tag": "dns-trick-direct",
-        "address": "https://sky.rethinkdns.com/",
-        "detour": "direct-fragment"
+        "tag": "Best Latency-dns",
+        "address": "fakeip",
+        "strategy": "prefer_ipv4",
+        "detour": "Best Latency"
       },
       {
-        "tag": "dns-direct",
-        "address": "9.9.9.9",
-        "address_resolver": "dns-local",
+        "tag": "direct-dns",
+        "address": "udp://8.8.8.8",
+        "strategy": "prefer_ipv4",
         "detour": "direct"
       },
       {
-        "tag": "dns-local",
-        "address": "local",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns-block",
+        "tag": "block-dns",
         "address": "rcode://success"
       }
     ],
     "rules": [
       {
-        "domain": "qoypua5rddvey8m0dco7",
-        "server": "dns-direct"
+        "domain_suffix": [
+          "all-v4.dgi000.store",
+          "all-v6.dgi000.store"
+        ],
+        "server": "direct-dns",
+        "rewrite_ttl": 20
       },
       {
-        "domain": "www.google.com",
-        "server": "dns-remote",
+        "domain": "www.gstatic.com",
+        "server": "Internet-dns",
         "rewrite_ttl": 3000
       },
       {
-        "rule_set": [
-          "geoip-ir",
-          "geosite-ir"
+        "network": "udp",
+        "port": 443,
+        "server": "block-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "domain_regex": [
+          ".*\\.ir$",
+          ".*\\.xn--mgba3a4f16a$"
         ],
-        "server": "dns-direct"
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "rule_set": "geosite-ir",
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "Internet",
+        "server": "Internet-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "Best Latency",
+        "server": "Best Latency-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "direct",
+        "server": "direct-dns",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "any",
+        "server": "direct-dns",
+        "rewrite_ttl": 20
       }
     ],
-    "final": "dns-remote",
- 
+    "final": "Internet-dns",
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
     },
-    "independent_cache": true
+    "strategy": "prefer_ipv4",
+    "disable_expire": true
   },
   "inbounds": [
     {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "tun0",
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed",
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv4"
+    },
+    {
       "type": "mixed",
       "tag": "mixed-in",
-      "listen": "127.0.0.1",
-      "listen_port": 2334,
+      "listen": "0.0.0.0",
+      "listen_port": 2080,
       "sniff": true,
-      "sniff_override_destination": true
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv4"
     },
     {
       "type": "direct",
       "tag": "dns-in",
-      "listen": "127.0.0.1",
-      "listen_port": 16450
+      "listen": "0.0.0.0",
+      "listen_port": 6450,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv4",
+      "override_address": "8.8.8.8",
+      "override_port": 53
     }
   ],
-  "outbounds": [
-    {
-      "type": "selector",
-      "tag": "select",
-      "outbounds": [
-        "auto",
-                "WARP-MAIN",
-                "WARP-WIW"
-      ],
-      "default": "auto"
-    },
-    {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": [
-                "WARP-MAIN",
-                "WARP-WIW"
-      ],
-      "url": "http://www.google.com/generate_204",
-      "interval": "10m0s",
-      "tolerance": 1,
-      "idle_timeout": "30m0s"
-    },
-    {
-            "tag": "WARP-MAIN",
-            "type": "wireguard",
-            "server": "162.159.195.237",
-            "server_port": 3476,
-            "local_address": [
-                "172.16.0.2/32",
-                "2606:4700:110:8735:bb29:91bc:1c82:aa73/128"
-            ],
-            "private_key": "4K8xIq18bN7h4TMDm7pCgoF/LFiJzfxW7OYiGBk3IFg=",
-            "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-            "mtu": 1384,
-            "reserved": [
-                13,
-                14,
-                22
-            ],
-            "detour": "direct",
-            "workers": 2
-        },
-        {
-            "tag": "WARP-WIW",
-            "type": "wireguard",
-            "server": "188.114.99.25",
-            "server_port": 942,
-            "local_address": [
-                "172.16.0.2/32",
-                "2606:4700:110:8735:bb29:91bc:1c82:aa73/128"
-            ],
-            "private_key": "wM3VxOx9h7MClClmxyY6VwAC5Lm+Hz4xMew6QVqZPH0=",
-            "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-            "mtu": 1384,
-            "reserved": [
-                39,
-                99,
-                249
-            ],
-            "detour": "WARP-MAIN",
-            "workers": 2
-        },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
+"outbounds": [
+		{
+			"type": "selector",
+			"tag": "Internet",
+			"outbounds": [
+				"Best Latency",
+                        "Farbod"
+			]
+		},
+		{
+			"type": "urltest",
+			"tag": "Best Latency",
+			"outbounds": [
+                        "Farbod"
+
+			],
+			"url": "http://www.google.com/generate_204",
+			"interval": "3m0s",
+			"tolerance": 1,
+			"idle_timeout": "9m0s"
+		},
+{
+  "server": "77.91.87.167",
+  "server_port": 2087,
+  "tag": "Farbod",
+  "type": "hysteria2",
+  "password": "04bb42227f7c629c",
+  "obfs": {
+    "password": "fd784f88798796c1",
+    "type": "salamander"
+  },
+  "tls": {
+    "enabled": true,
+    "server_name": "www.google.com",
+    "insecure": true
+  }
+},
     {
       "type": "direct",
       "tag": "direct"
     },
     {
-      "type": "direct",
-      "tag": "direct-fragment",
-      "tls_fragment": {
-        "enabled": true,
-        "size": "20-50",
-        "sleep": "1-1"
-      }
-    },
-    {
-      "type": "direct",
-      "tag": "bypass"
-    },
-    {
       "type": "block",
       "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
     }
   ],
   "route": {
     "rules": [
-      {
-        "rule_set": [
-          "geoip-ir",
-          "geosite-ir"
-        ],
-        "outbound": "direct"
-      },
       {
         "inbound": "dns-in",
         "outbound": "dns-out"
@@ -178,12 +188,39 @@
         "outbound": "dns-out"
       },
       {
-        "clash_mode": "Direct",
+        "network": "udp",
+        "port": 443,
+        "outbound": "block"
+      },
+      {
+        "protocol": "stun",
+        "outbound": "block"
+      },
+      {
+        "ip_cidr": [
+          "10.10.34.34",
+          "10.10.34.35",
+          "10.10.34.36"
+        ],
+        "outbound": "block"
+      },
+      {
+        "ip_is_private": true,
         "outbound": "direct"
       },
       {
-        "clash_mode": "Global",
-        "outbound": "select"
+        "domain_regex": [
+          ".*\\.ir$",
+          ".*\\.xn--mgba3a4f16a$"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geoip-ir",
+          "geosite-ir"
+        ],
+        "outbound": "direct"
       }
     ],
     "rule_set": [
@@ -191,29 +228,31 @@
         "type": "remote",
         "tag": "geoip-ir",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geoip-ir.srs",
-        "update_interval": "120h0m0s"
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+        "download_detour": "direct",
+        "update_interval": "168h0m0s"
       },
       {
         "type": "remote",
         "tag": "geosite-ir",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geosite-ir.srs",
-        "update_interval": "120h0m0s"
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+        "download_detour": "direct",
+        "update_interval": "168h0m0s"
       }
     ],
-    "final": "select",
+    "final": "Internet",
     "auto_detect_interface": true,
     "override_android_vpn": true
   },
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "clash.db"
-    },
-    "clash_api": {
-      "external_controller": "127.0.0.1:16756",
-      "secret": "nsBiqt7UHNwPlJKM"
+      "path": "cache.db",
+      "cache_id": "saeed",
+      "store_fakeip": true,
+      "store_rdrc": true,
+      "rdrc_timeout": "168h0m0s"
     }
   }
 }
