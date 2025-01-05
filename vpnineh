@@ -272,20 +272,36 @@
   }
 },
 {
-  "server": "77.72.5.150",
-  "server_port": 989,
+  "server": "66.135.11.68",
+  "server_port": 443,
   "tag": "9",
-  "type": "shadowsocks",
-  "method": "aes-256-cfb",
-  "password": "f8f7aCzcPKbsF8p3"
+  "type": "hysteria2",
+  "password": "4e9ee29b39a28277",
+  "obfs": {
+    "password": "13f7ba5f",
+    "type": "salamander"
+  },
+  "tls": {
+    "enabled": true,
+    "server_name": "66.135.11.68",
+    "insecure": true
+  }
 },
 {
-  "server": "205.134.180.147",
+  "server": "207.148.22.93",
   "server_port": 443,
   "tag": "10",
-  "type": "shadowsocks",
-  "method": "chacha20-ietf-poly1305",
-  "password": "9Bvkw5aupNy8"
+  "type": "hysteria2",
+  "password": "9bb452b106ffc217",
+  "obfs": {
+    "password": "cd29099d",
+    "type": "salamander"
+  },
+  "tls": {
+    "enabled": true,
+    "server_name": "207.148.22.93",
+    "insecure": true
+  }
 },
 {
   "server": "109.201.152.181",
@@ -296,12 +312,34 @@
   "password": "shadowsocks"
 },
 {
-  "server": "121.127.46.147",
-  "server_port": 989,
+  "server": "162.251.82.147",
+  "server_port": 443,
   "tag": "12",
-  "type": "shadowsocks",
-  "method": "aes-256-cfb",
-  "password": "f8f7aCzcPKbsF8p3"
+  "type": "vmess",
+  "uuid": "fb0a2de6-bf06-4ff0-97ce-c21abcdc2d55",
+  "security": "auto",
+  "alter_id": 0,
+  "tls": {
+    "enabled": true,
+    "server_name": "6f3f4ed2-eyelid-fluttering.xp21.workers.dev",
+    "insecure": true,
+    "alpn": [
+      "http/1.1"
+    ],
+    "utls": {
+      "enabled": true,
+      "fingerprint": "chrome"
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/hms26.xpengmotors.sbs/linkws",
+    "headers": {
+      "Host": [
+        "6f3f4ed2-eyelid-fluttering.xp21.workers.dev"
+      ]
+    }
+  }
 },
 {
   "type": "wireguard",
