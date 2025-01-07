@@ -115,7 +115,7 @@
     "insecure": true
   }
 },
-        {
+{
   "server": "70.34.207.153",
   "server_port": 443,
   "tag": "🇸🇪 SE 153",
@@ -127,7 +127,7 @@
   },
   "tls": {
     "enabled": true,
-    "server_name": "www.google.com",
+    "server_name": "70.34.207.153",
     "insecure": true
   }
 },
