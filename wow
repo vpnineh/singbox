@@ -77,32 +77,29 @@
             "tag": "Proxy",
             "type": "selector",
             "outbounds": [
-                "🇸🇪 SE 167",
-                "🇸🇪 SE 153",
-                "🇺🇸 US 93"
-            ],
-            "default": "🇸🇪 SE 167",
+                "🇸🇪 SE W",
+                "🇸🇪 SE"            
+        ],
+            "default": "🇸🇪 SE W",
             "interrupt_exist_connections": false
         },
         {
             "tag": "Auto",
             "type": "urltest",
             "outbounds": [
-                "🇸🇪 SE 167",
-                "🇸🇪 SE 153",
-                "🇺🇸 US 93"
-
+                "🇸🇪 SE W",
+                "🇸🇪 SE"            
             ],
-            "url": "http://cp.cloudflare.com/",
+            "url": "https://www.gstatic.com/generate_204",
             "interval": "15m",
             "tolerance": 50,
             "idle_timeout": "30m",
             "interrupt_exist_connections": false
         },
-        {
+      {
   "server": "77.91.87.167",
   "server_port": 2087,
-  "tag": "🇸🇪 SE 167",
+  "tag": "🇸🇪 SE W",
   "type": "hysteria2",
   "password": "04bb42227f7c629c",
   "obfs": {
@@ -116,29 +113,13 @@
   }
 },
 {
-  "server": "70.34.207.153",
-  "server_port": 443,
-  "tag": "🇸🇪 SE 153",
+  "server": "150.241.77.174",
+  "server_port": 33344,
+  "tag": "🇸🇪 SE",
   "type": "hysteria2",
-  "password": "18240b2dfdd76484",
+  "password": "5a072771500faceb",
   "obfs": {
-    "password": "d2648ec2",
-    "type": "salamander"
-  },
-  "tls": {
-    "enabled": true,
-    "server_name": "70.34.207.153",
-    "insecure": true
-  }
-},
-{
-  "server": "207.148.22.93",
-  "server_port": 443,
-  "tag": "🇺🇸 US 93",
-  "type": "hysteria2",
-  "password": "9bb452b106ffc217",
-  "obfs": {
-    "password": "cd29099d",
+    "password": "f64fc97d84ec14cf",
     "type": "salamander"
   },
   "tls": {
