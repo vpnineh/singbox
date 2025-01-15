@@ -191,12 +191,8 @@
     "enabled": true,
     "server_name": "www.google.com",
     "insecure": true
-  },
-  "groupid": "ff602bf8-1727-4aff-a76b-6bfb7b5c746d",
-  "latency": "285",
-  "outlet_ip": "",
-  "outlet_region": ""
-},
+  }
+,
    {
   "type": "wireguard",
   "tag": "2",
