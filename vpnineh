@@ -288,21 +288,22 @@
   }
 },
 {
-  "server": "207.148.22.93",
-  "server_port": 443,
+  "server": "62.60.231.189",
+  "server_port": 12123,
   "tag": "10",
   "type": "hysteria2",
-  "password": "9bb452b106ffc217",
+  "attach": "",
+  "password": "f8e40931bbb827df",
   "obfs": {
-    "password": "cd29099d",
+    "password": "dbc688df29e582d3",
     "type": "salamander"
   },
   "tls": {
     "enabled": true,
-    "server_name": "207.148.22.93",
+    "server_name": "www.google.com",
     "insecure": true
-  }
-},
+	}
+,
 {
   "server": "109.201.152.181",
   "server_port": 443,
