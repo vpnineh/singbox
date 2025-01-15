@@ -178,21 +178,13 @@
 			"idle_timeout": "9m0s"
 		},
 {
-  "server": "62.60.231.189",
-  "server_port": 12123,
+  "server": "war.ssvpnapp.win",
+  "server_port": 57456,
   "tag": "1",
-  "type": "hysteria2",
-  "password": "f8e40931bbb827df",
-  "obfs": {
-    "password": "dbc688df29e582d3",
-    "type": "salamander"
-  },
-  "tls": {
-    "enabled": true,
-    "server_name": "www.google.com",
-    "insecure": true
-  }
-,
+  "type": "shadowsocks",
+  "method": "chacha20-ietf-poly1305",
+  "password": "d3837224ed465f00"
+},
    {
   "type": "wireguard",
   "tag": "2",
