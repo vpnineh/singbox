@@ -292,7 +292,6 @@
   "server_port": 12123,
   "tag": "10",
   "type": "hysteria2",
-  "attach": "",
   "password": "f8e40931bbb827df",
   "obfs": {
     "password": "dbc688df29e582d3",
