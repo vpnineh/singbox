@@ -272,19 +272,28 @@
   }
 },
 {
-  "server": "66.135.11.68",
+  "server": "beyonddbc.sbs",
   "server_port": 443,
   "tag": "9",
-  "type": "hysteria2",
-  "password": "4e9ee29b39a28277",
-  "obfs": {
-    "password": "13f7ba5f",
-    "type": "salamander"
-  },
+  "type": "vmess",
+  "uuid": "8d90c129-4156-4d6c-9115-24df25f26a02",
+  "security": "auto",
   "tls": {
     "enabled": true,
-    "server_name": "66.135.11.68",
-    "insecure": true
+    "server_name": "beyonddbc.sbs",
+    "insecure": true,
+    "utls": {
+      "enabled": true
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/linkws",
+    "headers": {
+      "Host": [
+        "beyonddbc.sbs"
+      ]
+    }
   }
 },
 {
