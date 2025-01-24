@@ -7,13 +7,13 @@
     "servers": [
       {
         "tag": "Internet-dns",
-        "address": "tcp://94.140.14.14",
+        "address": "https://1.1.1.2/dns-query",
         "strategy": "prefer_ipv4",
         "detour": "Internet"
       },
       {
         "tag": "Best Latency-dns",
-        "address": "fakeip",
+        "address": "https://1.1.1.2/dns-query",
         "strategy": "prefer_ipv4",
         "detour": "Best Latency"
       },
@@ -30,22 +30,12 @@
     ],
     "rules": [
       {
-        "domain_suffix": [
+        "domain": [
+          "h2.88981401.xyz",
           "all-v4.dgi000.store",
-          "all-v6.dgi000.store"
+          "all-v6.cybsecguru.com"
         ],
         "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "domain": "www.gstatic.com",
-        "server": "Internet-dns",
-        "rewrite_ttl": 3000
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "server": "block-dns",
         "rewrite_ttl": 20
       },
       {
@@ -53,11 +43,6 @@
           ".*\\.ir$",
           ".*\\.xn--mgba3a4f16a$"
         ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "rule_set": "geosite-ir",
         "server": "direct-dns",
         "rewrite_ttl": 20
       },
@@ -80,27 +65,36 @@
         "outbound": "any",
         "server": "direct-dns",
         "rewrite_ttl": 20
+      },
+      {
+        "inbound": "tun-in",
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "Best Latency-dns",
+        "disable_cache": true,
+        "rewrite_ttl": 20
       }
     ],
-    "final": "Internet-dns",
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "strategy": "prefer_ipv4",
-    "disable_expire": true
+    "independent_cache": true
   },
   "inbounds": [
     {
       "type": "tun",
       "tag": "tun-in",
-      "interface_name": "tun0",
       "mtu": 9000,
-      "inet4_address": "172.19.0.1/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
       "auto_route": true,
       "strict_route": true,
+      "route_exclude_address": [
+        "192.168.0.0/16",
+        "fc00::/7"
+      ],
       "stack": "mixed",
       "sniff": true,
       "sniff_override_destination": true,
@@ -110,21 +104,10 @@
       "type": "mixed",
       "tag": "mixed-in",
       "listen": "0.0.0.0",
-      "listen_port": 2080,
+      "listen_port": 4040,
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "prefer_ipv4"
-    },
-    {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "0.0.0.0",
-      "listen_port": 6450,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4",
-      "override_address": "8.8.8.8",
-      "override_port": 53
     }
   ],
 "outbounds": [
