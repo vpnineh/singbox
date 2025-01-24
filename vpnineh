@@ -208,12 +208,30 @@
   "password": "HSZuyJQcWe8dxNdF"
 },
 {
-  "server": "series-a2.varzesh360.co",
+  "server": "az05.beyondy.cfd",
   "server_port": 443,
   "tag": "6",
-  "type": "shadowsocks",
-  "method": "chacha20-ietf-poly1305",
-  "password": "mps3FwmDjLrWaOVg"
+  "type": "vmess",
+  "uuid": "3f638f34-8dba-4186-bc43-2716a7ddd4be",
+  "security": "auto",
+  "alter_id": 0,
+  "tls": {
+    "enabled": true,
+    "server_name": "az05.beyondy.cfd",
+    "insecure": true,
+    "utls": {
+      "enabled": true
+    }
+  },
+  "transport": {
+    "type": "ws",
+    "path": "/link",
+    "headers": {
+      "Host": [
+        "az05.beyondy.cfd"
+      ]
+    }
+  }
 },
 {
   "server": "138.186.142.4",
