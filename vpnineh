@@ -293,8 +293,7 @@
   "tag": "10",
   "type": "vmess",
   "uuid": "0c49cd19-2758-4d38-e6a8-11f2d6635860",
-  "security": "auto",
-  "alter_id": 0
+  "security": "auto"
 },
 {
   "server": "109.201.152.181",
