@@ -288,20 +288,13 @@
   }
 },
 {
-  "server": "207.148.22.93",
-  "server_port": 443,
+  "server": "46.29.166.237",
+  "server_port": 47555,
   "tag": "10",
-  "type": "hysteria2",
-  "password": "9bb452b106ffc217",
-  "obfs": {
-    "password": "cd29099d",
-    "type": "salamander"
-  },
-  "tls": {
-    "enabled": true,
-    "server_name": "207.148.22.93",
-    "insecure": true
-  }
+  "type": "vmess",
+  "uuid": "0c49cd19-2758-4d38-e6a8-11f2d6635860",
+  "security": "auto",
+  "alter_id": 0
 },
 {
   "server": "109.201.152.181",
@@ -312,34 +305,12 @@
   "password": "shadowsocks"
 },
 {
-  "server": "162.251.82.147",
+  "server": "109.201.152.181",
   "server_port": 443,
   "tag": "12",
-  "type": "vmess",
-  "uuid": "fb0a2de6-bf06-4ff0-97ce-c21abcdc2d55",
-  "security": "auto",
-  "alter_id": 0,
-  "tls": {
-    "enabled": true,
-    "server_name": "6f3f4ed2-eyelid-fluttering.xp21.workers.dev",
-    "insecure": true,
-    "alpn": [
-      "http/1.1"
-    ],
-    "utls": {
-      "enabled": true,
-      "fingerprint": "chrome"
-    }
-  },
-  "transport": {
-    "type": "ws",
-    "path": "/hms26.xpengmotors.sbs/linkws",
-    "headers": {
-      "Host": [
-        "6f3f4ed2-eyelid-fluttering.xp21.workers.dev"
-      ]
-    }
-  }
+  "type": "shadowsocks",
+  "method": "aes-128-cfb",
+  "password": "shadowsocks"
 },
 {
   "type": "wireguard",
@@ -365,12 +336,12 @@
   "password": "f8f7aCzcPKbsF8p3"
 },
 {
-  "server": "5.188.181.201",
-  "server_port": 9020,
+  "server": "80.92.204.106",
+  "server_port": 9061,
   "tag": "15",
   "type": "shadowsocks",
   "method": "aes-256-cfb",
-  "password": "BNmAXXxAHYpTRdzu"
+  "password": "4R3hUfZ2FHhDmNcP"
 },
     {
       "type": "direct",
