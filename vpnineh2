@@ -1,0 +1,245 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "proxy"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://dns.alidns.com/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_resolver",
+        "address": "223.5.5.5",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_resolver"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "dns_proxy"
+      }
+    ],
+    "final": "dns_direct"
+  },
+  "route": {
+    "rule_set": [
+      {
+        "tag": "geosite-geolocation-!ir",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!ir.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geoip-ir",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-ir.srs",
+        "download_detour": "proxy"
+      }
+    ],
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "port": 853,
+        "network": "tcp",
+        "outbound": "block"
+      },
+      {
+        "port": [
+          443,
+          853
+        ],
+        "network": "udp",
+        "outbound": "block"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geoip-ir",
+            "invert": true
+          },
+          {
+            "rule_set": "geosite-geolocation-!ir"
+          }
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "rule_set": "geoip-ir",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "inet4_address": "172.16.0.1/30",
+      "inet6_address": "fd00::1/126",
+      "mtu": 1492,
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "system",
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "type": "selector",
+      "outbounds": [
+        "auto",
+        "direct",
+        "🇳🇱NL-109.201.152.181-0750",
+        "日本3|%40ripaojiedian",
+        "🇪🇸ES-5.188.181.201-0810",
+        "US🇺🇸 | @VPNineh | 19.08",
+        "US🇺🇸+|+%40VPNineh+|+1.34",
+        "FR🇫🇷 | @VPNineh | 171.9",
+        "PL🇵🇱+|+%40VPNineh+|+165.22",
+        "SG🇸🇬+|+%40VPNineh+|+174.31"
+      ]
+    },
+    {
+      "tag": "auto",
+      "type": "urltest",
+      "outbounds": [
+        "🇳🇱NL-109.201.152.181-0750",
+        "日本3|%40ripaojiedian",
+        "🇪🇸ES-5.188.181.201-0810",
+        "US🇺🇸 | @VPNineh | 19.08",
+        "US🇺🇸+|+%40VPNineh+|+1.34",
+        "FR🇫🇷 | @VPNineh | 171.9",
+        "PL🇵🇱+|+%40VPNineh+|+165.22",
+        "SG🇸🇬+|+%40VPNineh+|+174.31"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇳🇱NL-109.201.152.181-0750",
+      "server": "109.201.152.181",
+      "server_port": 443,
+      "method": "aes-128-cfb",
+      "password": "shadowsocks"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "日本3|%40ripaojiedian",
+      "server": "18.176.215.63",
+      "server_port": 2377,
+      "method": "chacha20-ietf-poly1305",
+      "password": "t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇪🇸ES-5.188.181.201-0810",
+      "server": "5.188.181.201",
+      "server_port": 9031,
+      "method": "aes-256-cfb",
+      "password": "BwcAUZk8hUFAkDGN"
+    },
+    {
+      "type": "vless",
+      "tag": "US🇺🇸 | @VPNineh | 19.08",
+      "server": "162.19.228.119",
+      "server_port": 80,
+      "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+      "transport": {
+        "type": "ws",
+        "path": "/http",
+        "headers": {
+          "host": "google.com"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "US🇺🇸+|+%40VPNineh+|+1.34",
+      "server": "38.107.226.146",
+      "server_port": 1230,
+      "method": "chacha20-ietf-poly1305",
+      "password": "H5S0hvcxRi#YLmgU"
+    },
+    {
+      "type": "vmess",
+      "tag": "FR🇫🇷 | @VPNineh | 171.9",
+      "server": "146.19.168.161",
+      "server_port": 443,
+      "uuid": "3f638f34-8dba-4186-bc43-2716a7ddd4be",
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "az05.beyondy.cfd"
+      },
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "PL🇵🇱+|+%40VPNineh+|+165.22",
+      "server": "45.144.48.63",
+      "server_port": 57456,
+      "method": "chacha20-ietf-poly1305",
+      "password": "d3837224ed465f00"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "SG🇸🇬+|+%40VPNineh+|+174.31",
+      "server": "107.148.37.70",
+      "server_port": 8388,
+      "method": "chacha20-ietf",
+      "password": "asd123456"
+    }
+  ],
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db"
+    }
+  }
+}
