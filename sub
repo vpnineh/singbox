@@ -113,7 +113,7 @@
  "outbounds": [
     {
       "tag": "Internet",
-      "type": "Best Latency",
+      "type": "selector",
       "outbounds": [
         "auto",
         "direct",
