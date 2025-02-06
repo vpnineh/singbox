@@ -112,8 +112,8 @@
   ],
  "outbounds": [
     {
-      "tag": "proxy",
-      "type": "selector",
+      "tag": "Internet",
+      "type": "Best Latency",
       "outbounds": [
         "auto",
         "direct",
