@@ -43,14 +43,14 @@
         "tag": "geosite-geolocation-!cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
         "download_detour": "proxy"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
         "download_detour": "proxy"
       }
     ],
@@ -126,7 +126,8 @@
         "US🇺🇸+|+%40VPNineh+|+1.34",
         "FR🇫🇷 | @VPNineh | 171.9",
         "PL🇵🇱+|+%40VPNineh+|+165.22",
-        "SG🇸🇬+|+%40VPNineh+|+174.31"
+        "SG🇸🇬+|+%40VPNineh+|+174.31",
+        "OK"
       ]
     },
     {
@@ -140,7 +141,8 @@
         "US🇺🇸+|+%40VPNineh+|+1.34",
         "FR🇫🇷 | @VPNineh | 171.9",
         "PL🇵🇱+|+%40VPNineh+|+165.22",
-        "SG🇸🇬+|+%40VPNineh+|+174.31"
+        "SG🇸🇬+|+%40VPNineh+|+174.31",
+        "OK"
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
@@ -234,6 +236,14 @@
       "server_port": 8388,
       "method": "chacha20-ietf",
       "password": "asd123456"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "OK",
+      "server": "45.87.175.166",
+      "server_port": 8080,
+      "method": "chacha20-ietf-poly1305",
+      "password": "cvII85TrW6n0OGyfpHVS1u"
     }
   ],
   "experimental": {
