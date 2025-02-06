@@ -44,14 +44,16 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
-        "download_detour": "proxy"
+        "download_detour": "direct",
+        "update_interval": "168h0m0s"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
-        "download_detour": "proxy"
+        "download_detour": "direct",
+        "update_interval": "168h0m0s"
       }
     ],
     "rules": [
@@ -84,7 +86,7 @@
             "rule_set": "geosite-geolocation-!cn"
           }
         ],
-        "outbound": "proxy"
+        "outbound": "direct"
       },
       {
         "rule_set": "geoip-cn",
