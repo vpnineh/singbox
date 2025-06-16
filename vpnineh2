@@ -1,255 +1,1317 @@
+// Copyright (c) 2025 SiNAVM  
+// All rights reserved.  
+// This configuration file is for personal use only. Redistribution, modification, or commercial use is prohibited without explicit permission  
+
+//subscription-userinfo: upload=0; download=0; total=9000000000000; expire=0  
+//profile-update-interval: 6  
+//support-url: https://t.me/sinavm  
+//profile-web-page-url: https://t.me/sinavm  
+
 {
-  "log": {
-    "level": "info",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
+    "log": {
+      "level": "panic",
+      "timestamp": true
+    },
+    "dns": {
+      "servers": [
+        {
+          "tag": "dns_proxy",
+          "address": "https://1.1.1.1/dns-query",
+          "address_resolver": "dns_direct",
+          "strategy": "prefer_ipv4",
+          "detour": "@ð’ð¢ðð€ð•ðŒðŸ‘ˆðŸ»Ú©Ø§Ù†Ø§Ù„ ØªÙ„Ú¯Ø±Ø§Ù…"
+        },
+        {
+          "tag": "dns_direct",
+          "address": "local",
+          "strategy": "prefer_ipv4",
+          "detour": "@ð’ð¢ðð€ð•ðŒðŸ‘ˆðŸ»Ú©Ø§Ù†Ø§Ù„ ØªÙ„Ú¯Ø±Ø§Ù…"
+        },
+        {
+          "tag": "dns_block",
+          "address": "rcode://success"
+        }
+      ],
+      "rules": [
+        {
+          "outbound": "any",
+          "server": "dns_direct"
+        }
+
+
+      ],
+      "final": "dns_proxy",
+      "independent_cache": true
+    },
+    "ntp": {
+      "enabled": true,
+      "server": "ir.pool.ntp.org",
+      "server_port": 123,
+      "detour": "direct"
+    },
+    "inbounds": [
       {
-        "tag": "dns_proxy",
-        "address": "https://1.1.1.1/dns-query",
-        "address_resolver": "dns_resolver",
-        "strategy": "ipv4_only",
-        "detour": "proxy"
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 20122,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "http",
+      "listen": "127.0.0.1",
+      "listen_port": 8181,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 8080,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "tun",
+     "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": false,
+      "stack": "mixed",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 20122
+        }
       },
-      {
-        "tag": "dns_direct",
-        "address": "https://dns.alidns.com/dns-query",
-        "address_resolver": "dns_resolver",
-        "strategy": "ipv4_only",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns_resolver",
-        "address": "223.5.5.5",
-        "detour": "direct"
-      }
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    }
+
     ],
-    "rules": [
-      {
-        "outbound": "any",
-        "server": "dns_resolver"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "dns_proxy"
-      }
-    ],
-    "final": "dns_direct"
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "@ð’ð¢ðð€ð•ðŒðŸ‘ˆðŸ»Ú©Ø§Ù†Ø§Ù„ ØªÙ„Ú¯Ø±Ø§Ù…",
+      "outbounds": [
+        "@ð™Žð™žð™‰ð˜¼ð™‘ð™ˆ",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡¬",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡²",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡­",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡¦",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡«ðŸ‡®",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡·ðŸ‡´",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡«ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¸ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡¿",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡¬",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¦",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡­",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡±",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡²ðŸ‡©",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¾",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¿",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡°",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ºðŸ‡¸",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡¸",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡±ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¹ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡­ðŸ‡°",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡­ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¸ðŸ‡¬",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡§",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡®ðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¯ðŸ‡µ",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡±ðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡³ðŸ‡±",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¹ðŸ‡©",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡­",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡·ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡¶"
+
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "@ð™Žð™žð™‰ð˜¼ð™‘ð™ˆ",
+      "outbounds": [
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡¬",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡²",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡­",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡¦",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡«ðŸ‡®",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡·ðŸ‡´",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡«ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¸ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡¿",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡¬",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¦",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡­",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡±",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡²ðŸ‡©",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¾",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¿",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡°",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ºðŸ‡¸",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡¸",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡±ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¹ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡ª",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡·",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡­ðŸ‡°",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡­ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¸ðŸ‡¬",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡§",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡®ðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¯ðŸ‡µ",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡±ðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡³ðŸ‡±",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¹ðŸ‡©",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡­",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡·ðŸ‡º",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡¹",
+"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡¶"
+
+      ],
+      "url": "http://whoer.net",
+      "interval": "9m0s",
+      "tolerance": 1,
+      "idle_timeout": "9m0s"
+    },
+{
+  "headers":{
+    "Host":[
+      "stream.meet.google.com"
+    ]
   },
+  "password": "ioqn613v",
+  "path": "",
+  "server": "prox-eg.pointtoserver.com",
+  "server_port": 10799,
+  "domain_strategy": "",
+  "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡¬",
+  "tls": {
+    "alpn": ["h2,http/1.1"],
+    "disable_sni": false,
+    "enabled": false,
+    "server_name": "discord.gg"
+  },
+  "type": "http",
+  "username": "purevpn0s12300644"
+},
+{
+  "headers":{
+    "Host":[
+      "stream.meet.google.com"
+    ]
+  },
+  "password": "ioqn613v",
+  "path": "",
+  "server": "prox-bm.pointtoserver.com",
+  "server_port": 10799,
+  "domain_strategy": "",
+  "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡²",
+  "tls": {
+    "alpn": ["h2,http/1.1"],
+    "disable_sni": false,
+    "enabled": false,
+    "server_name": "discord.gg"
+  },
+  "type": "http",
+  "username": "purevpn0s12300644"
+},
+
+{
+  "headers":{
+    "Host":[
+      "stream.meet.google.com"
+    ]
+  },
+  "password": "ioqn613v",
+  "path": "",
+  "server": "prox-ph.pointtoserver.com",
+  "server_port": 10799,
+  "domain_strategy": "",
+  "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡­",
+  "tls": {
+    "alpn": ["h2,http/1.1"],
+    "disable_sni": false,
+    "enabled": false,
+    "server_name": "discord.gg"
+  },
+  "type": "http",
+  "username": "purevpn0s12300644"
+},
+{
+  "headers":{
+    "Host":[
+      "stream.meet.google.com"
+    ]
+  },
+  "password": "ioqn613v",
+  "path": "",
+  "server": "prox-pa.pointtoserver.com",
+  "server_port": 10799,
+  "domain_strategy": "",
+  "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡¦",
+  "tls": {
+    "alpn": ["h2,http/1.1"],
+    "disable_sni": false,
+    "enabled": false,
+    "server_name": "discord.gg"
+  },
+  "type": "http",
+  "username": "purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+    "password": "ioqn613v",
+    "path": "",
+    "server": "prox-tr.pointtoserver.com",
+    "server_port": 10799,
+    "domain_strategy": "",
+    "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡·",
+    "tls": {
+      "alpn": ["h2,http/1.1"],
+      "disable_sni": false,
+      "enabled": false,
+      "server_name": "discord.gg"
+    },
+    "type": "http",
+    "username": "purevpn0s12300644"
+  },
+  {
+    "headers": {
+      "Host": ["stream.meet.google.com"]
+    },
+    "password": "ioqn613v",
+    "path": "",
+    "server": "prox-fi.pointtoserver.com",
+    "server_port": 10799,
+    "domain_strategy": "",
+    "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡«ðŸ‡®",
+    "tls": {
+      "alpn": ["h2,http/1.1"],
+      "disable_sni": false,
+      "enabled": false,
+      "server_name": "discord.gg"
+    },
+    "type": "http",
+    "username": "purevpn0s12300644"
+  },
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+    "password": "ioqn613v",
+    "path": "",
+    "server": "prox-ro.pointtoserver.com",
+    "server_port": 10799,
+    "domain_strategy": "",
+    "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡·ðŸ‡´",
+    "tls": {
+      "alpn": ["h2,http/1.1"],
+      "disable_sni": false,
+      "enabled": false,
+      "server_name": "discord.gg"
+    },
+    "type": "http",
+    "username": "purevpn0s12300644"
+  },
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+    "password": "ioqn613v",
+    "path": "",
+    "server": "prox-es.pointtoserver.com",
+    "server_port": 10799,
+    "domain_strategy": "",
+    "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡«ðŸ‡·",
+    "tls": {
+      "alpn": ["h2,http/1.1"],
+      "disable_sni": false,
+      "enabled": false,
+      "server_name": "discord.gg"
+    },
+    "type": "http",
+    "username": "purevpn0s12300644"
+  },
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+    "password": "ioqn613v",
+    "path": "",
+    "server": "prox-se.pointtoserver.com",
+    "server_port": 10799,
+    "domain_strategy": "",
+    "tag": "@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¸ðŸ‡ª",
+    "tls": {
+      "alpn": ["h2,http/1.1"],
+      "disable_sni": false,
+      "enabled": false,
+      "server_name": "discord.gg"
+    },
+    "type": "http",
+    "username": "purevpn0s12300644"
+  },
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ae.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡ª",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-al.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡¿",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-at.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡¹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-au.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡º",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-in.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡ª",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bg.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡¬",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-br.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡·",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ca.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¦",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-mc.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡­",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-pr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡±",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bo.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡²ðŸ‡©",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-pr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¾",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-cz.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¨ðŸ‡¿",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-cl.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡ª",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-om.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡©ðŸ‡°",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bb.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ºðŸ‡¸",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ee.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡ª",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-es.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡ªðŸ‡¸",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-vn.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡±ðŸ‡º",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-tr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¹ðŸ‡·",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-af.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡ª",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-gr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡·",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ro.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡­ðŸ‡°",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-hu.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡­ðŸ‡º",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bh.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¸ðŸ‡¬",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bd.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¬ðŸ‡§",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-lt.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡®ðŸ‡¹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bo.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¯ðŸ‡µ",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bs.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡±ðŸ‡¹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ie.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡³ðŸ‡±",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-rs.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¹ðŸ‡©",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ky.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡§ðŸ‡­",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bn.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡·ðŸ‡º",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ar.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡µðŸ‡¹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-jp.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@ð—¦ð—¶ð—¡ð—”ð—©ð— ðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…ðŸ‡¦ðŸ‡¶",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"discord.gg"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
   "route": {
-    "rule_set": [
-      {
-        "tag": "geosite-geolocation-!cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
-        "download_detour": "proxy"
-      },
-      {
-        "tag": "geoip-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
-        "download_detour": "proxy"
-      }
-    ],
     "rules": [
       {
-        "protocol": "dns",
-        "outbound": "dns-out"
-      },
-      {
-        "port": 853,
-        "network": "tcp",
-        "outbound": "block"
-      },
-      {
-        "port": [
-          443,
-          853
-        ],
-        "network": "udp",
-        "outbound": "block"
+        "inbound": "tun-in",
+        "action": "sniff"
       },
       {
         "type": "logical",
-        "mode": "and",
+        "mode": "or",
         "rules": [
           {
-            "rule_set": "geoip-cn",
-            "invert": true
+            "inbound": "dns-in"
           },
           {
-            "rule_set": "geosite-geolocation-!cn"
+            "port": 53
+          },
+          {
+            "protocol": "dns"
           }
         ],
-        "outbound": "proxy"
+        "action": "hijack-dns"
       },
       {
-        "rule_set": "geoip-cn",
+        "clash_mode": "Direct",
         "outbound": "direct"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "inbound": "tun-in",
+        "action": "resolve"
+      },
+      {
+        "ip_cidr": "10.10.34.0/24",
+        "outbound": "@ð’ð¢ðð€ð•ðŒðŸ‘ˆðŸ»Ú©Ø§Ù†Ø§Ù„ ØªÙ„Ú¯Ø±Ø§Ù…"
       },
       {
         "ip_is_private": true,
         "outbound": "direct"
+      },
+      {
+        "domain_regex": [
+          ".*\\.ir$",
+          ".*\\.xn--mgba3a4f16a$"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "protocol": "stun",
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "action": "reject",
+        "method": "default"
       }
     ],
-    "final": "proxy",
-    "auto_detect_interface": true
+    "auto_detect_interface": true,
+    "override_android_vpn": true
   },
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "inet4_address": "172.16.0.1/30",
-      "inet6_address": "fd00::1/126",
-      "mtu": 1492,
-      "auto_route": true,
-      "strict_route": true,
-      "stack": "system",
-      "sniff": true,
-      "sniff_override_destination": false
-    }
-  ],
-  "outbounds": [
-    {
-      "tag": "proxy",
-      "type": "selector",
-      "outbounds": [
-        "auto",
-        "direct",
-        "🇳🇱NL-109.201.152.181-0750",
-        "日本3|%40ripaojiedian",
-        "🇪🇸ES-5.188.181.201-0810",
-        "US🇺🇸 | @VPNineh | 19.08",
-        "US🇺🇸+|+%40VPNineh+|+1.34",
-        "FR🇫🇷 | @VPNineh | 171.9",
-        "PL🇵🇱+|+%40VPNineh+|+165.22",
-        "SG🇸🇬+|+%40VPNineh+|+174.31",
-        "OK"
-      ]
-    },
-    {
-      "tag": "auto",
-      "type": "urltest",
-      "outbounds": [
-        "🇳🇱NL-109.201.152.181-0750",
-        "日本3|%40ripaojiedian",
-        "🇪🇸ES-5.188.181.201-0810",
-        "US🇺🇸 | @VPNineh | 19.08",
-        "US🇺🇸+|+%40VPNineh+|+1.34",
-        "FR🇫🇷 | @VPNineh | 171.9",
-        "PL🇵🇱+|+%40VPNineh+|+165.22",
-        "SG🇸🇬+|+%40VPNineh+|+174.31",
-        "OK"
-      ],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "10m",
-      "tolerance": 50
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇳🇱NL-109.201.152.181-0750",
-      "server": "109.201.152.181",
-      "server_port": 443,
-      "method": "aes-128-cfb",
-      "password": "shadowsocks"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "日本3|%40ripaojiedian",
-      "server": "18.176.215.63",
-      "server_port": 2377,
-      "method": "chacha20-ietf-poly1305",
-      "password": "t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇪🇸ES-5.188.181.201-0810",
-      "server": "5.188.181.201",
-      "server_port": 9031,
-      "method": "aes-256-cfb",
-      "password": "BwcAUZk8hUFAkDGN"
-    },
-    {
-      "type": "vless",
-      "tag": "US🇺🇸 | @VPNineh | 19.08",
-      "server": "162.19.228.119",
-      "server_port": 80,
-      "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
-      "transport": {
-        "type": "ws",
-        "path": "/http",
-        "headers": {
-          "host": "google.com"
-        }
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "US🇺🇸+|+%40VPNineh+|+1.34",
-      "server": "38.107.226.146",
-      "server_port": 1230,
-      "method": "chacha20-ietf-poly1305",
-      "password": "H5S0hvcxRi#YLmgU"
-    },
-    {
-      "type": "vmess",
-      "tag": "FR🇫🇷 | @VPNineh | 171.9",
-      "server": "146.19.168.161",
-      "server_port": 443,
-      "uuid": "3f638f34-8dba-4186-bc43-2716a7ddd4be",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "az05.beyondy.cfd"
-      },
-      "transport": {
-        "type": "ws"
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "PL🇵🇱+|+%40VPNineh+|+165.22",
-      "server": "45.144.48.63",
-      "server_port": 57456,
-      "method": "chacha20-ietf-poly1305",
-      "password": "d3837224ed465f00"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "SG🇸🇬+|+%40VPNineh+|+174.31",
-      "server": "107.148.37.70",
-      "server_port": 8388,
-      "method": "chacha20-ietf",
-      "password": "asd123456"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "OK",
-      "server": "45.87.175.166",
-      "server_port": 8080,
-      "method": "chacha20-ietf-poly1305",
-      "password": "cvII85TrW6n0OGyfpHVS1u"
-    }
-  ],
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "cache.db"
+      "path": "cache.db",
+      "cache_id": "sinavm",
+      "store_fakeip": true
+    },
+    "clash_api": {
+        "default_mode": "@SiNAVMðŸ‘ˆðŸ»ØªÙ„Ú¯Ø±Ø§Ù…",
+      "external_controller": "127.0.0.1:9090",
+      "access_control_allow_origin": "https://yacd.metacubex.one",
+      "access_control_allow_private_network": true
     }
   }
 }
