@@ -8,14 +8,23 @@
       {
         "tag": "dns-remote",
         "address": "1.1.1.1",
-        "address_strategy": "prefer_ipv4"
+        "address_strategy": "prefer_ipv4",
+        "detour": "SELECT"
       },
       {
         "tag": "dns-direct",
         "address": "8.8.8.8",
-        "address_strategy": "prefer_ipv4"
+        "address_strategy": "prefer_ipv4",
+        "detour": "direct"
       }
-    ]
+    ],
+    "rules": [
+      {
+        "rule_set": ["geosite-ir"],
+        "server": "dns-direct"
+      }
+    ],
+    "strategy": "prefer_ipv4"
   },
   "inbounds": [
     {
@@ -24,25 +33,24 @@
       "interface_name": "tun0",
       "inet4_address": "172.19.0.1/30",
       "auto_route": true,
-      "strict_route": true,
-      "sniff": true
+      "strict_route": true
     }
   ],
   "outbounds": [
     {
       "type": "shadowsocks",
       "tag": "TR",
-      "method": "chacha20-ietf-poly1305",
-      "password": "tvX1v#NSFP_LG_bJ",
       "server": "103.215.218.73",
-      "server_port": 808
+      "server_port": 808,
+      "method": "chacha20-ietf-poly1305",
+      "password": "tvX1v#NSFP_LG_bJ"
     },
     {
       "type": "hysteria2",
       "tag": "FI",
       "server": "drhystuichdfy.samanidempire.org",
       "server_port": 20335,
-      "auth": "80747420-96c4-4a2f-83e6-eea4e46beb09",
+      "password": "80747420-96c4-4a2f-83e6-eea4e46beb09",
       "tls": {
         "enabled": true,
         "server_name": "drhystuichdfy.samanidempire.org",
@@ -56,10 +64,10 @@
     {
       "type": "shadowsocks",
       "tag": "NL",
-      "method": "aes-128-cfb",
-      "password": "shadowsocks",
       "server": "109.201.152.181",
-      "server_port": 443
+      "server_port": 443,
+      "method": "aes-128-cfb",
+      "password": "shadowsocks"
     },
     {
       "type": "urltest",
@@ -85,6 +93,7 @@
     }
   ],
   "route": {
+    "domain_strategy": "prefer_ipv4",
     "rule_set": [
       {
         "type": "remote",
