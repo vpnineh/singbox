@@ -1,134 +1,79 @@
 {
   "log": {
-    "disabled": true,
-    "level": "panic"
+    "level": "info",
+    "timestamp": true
   },
   "dns": {
     "servers": [
       {
-        "tag": "Internet-dns",
-        "address": "https://1.1.1.2/dns-query",
-        "strategy": "prefer_ipv4",
-        "detour": "Internet"
+        "tag": "dns-remote",
+        "address": "1.1.1.1",
+        "address_strategy": "prefer_ipv4"
       },
       {
-        "tag": "Best Latency-dns",
-        "address": "https://1.1.1.2/dns-query",
-        "strategy": "prefer_ipv4",
-        "detour": "Best Latency"
-      },
-      {
-        "tag": "direct-dns",
-        "address": "udp://8.8.8.8",
-        "strategy": "prefer_ipv4",
-        "detour": "direct"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success"
+        "tag": "dns-direct",
+        "address": "8.8.8.8",
+        "address_strategy": "prefer_ipv4"
       }
-    ],
-    "rules": [
-      {
-        "domain": [
-          "h2.88981401.xyz",
-          "all-v4.dgi000.store",
-          "all-v6.cybsecguru.com"
-        ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "domain_regex": [
-          ".*\\.ir$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "Internet",
-        "server": "Internet-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "Best Latency",
-        "server": "Best Latency-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "direct",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "outbound": "any",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "inbound": "tun-in",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "Best Latency-dns",
-        "disable_cache": true,
-        "rewrite_ttl": 20
-      }
-    ],
-    "strategy": "prefer_ipv4",
-    "independent_cache": true
+    ]
   },
   "inbounds": [
     {
       "type": "tun",
       "tag": "tun-in",
-      "mtu": 9000,
-      "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
+      "interface_name": "tun0",
+      "inet4_address": "172.19.0.1/30",
       "auto_route": true,
       "strict_route": true,
-      "route_exclude_address": [
-        "192.168.0.0/16",
-        "fc00::/7"
-      ],
-      "stack": "mixed",
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 4040,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
+      "sniff": true
     }
   ],
- "outbounds": [
+  "outbounds": [
     {
-      "tag": "Internet",
-      "type": "selector",
-      "outbounds": [
-        "auto",
-        "direct",
-        "OK"
-      ]
+      "type": "shadowsocks",
+      "tag": "TR",
+      "method": "chacha20-ietf-poly1305",
+      "password": "tvX1v#NSFP_LG_bJ",
+      "server": "103.215.218.73",
+      "server_port": 808
     },
     {
-      "tag": "auto",
+      "type": "hysteria2",
+      "tag": "FI",
+      "server": "drhystuichdfy.samanidempire.org",
+      "server_port": 20335,
+      "auth": "80747420-96c4-4a2f-83e6-eea4e46beb09",
+      "tls": {
+        "enabled": true,
+        "server_name": "drhystuichdfy.samanidempire.org",
+        "alpn": ["h3"]
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "U1wBrYQyFm"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "NL",
+      "method": "aes-128-cfb",
+      "password": "shadowsocks",
+      "server": "109.201.152.181",
+      "server_port": 443
+    },
+    {
       "type": "urltest",
-      "outbounds": [
-        "OK"
-      ],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "10m",
-      "tolerance": 50
+      "tag": "PROXY",
+      "outbounds": ["TR", "FI", "NL"],
+      "interval": "60s",
+      "tolerance": 100,
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "selector",
+      "tag": "SELECT",
+      "outbounds": ["PROXY", "TR", "FI", "NL", "direct", "block"],
+      "default": "PROXY"
     },
     {
       "type": "direct",
@@ -137,66 +82,9 @@
     {
       "type": "block",
       "tag": "block"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "OK",
-      "server": "45.87.175.166",
-      "server_port": 8080,
-      "method": "chacha20-ietf-poly1305",
-      "password": "cvII85TrW6n0OGyfpHVS1u"
     }
   ],
   "route": {
-    "rules": [
-      {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
-      },
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "outbound": "block"
-      },
-      {
-        "protocol": "stun",
-        "outbound": "block"
-      },
-      {
-        "ip_cidr": [
-          "10.10.34.34",
-          "10.10.34.35",
-          "10.10.34.36"
-        ],
-        "outbound": "block"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "domain_regex": [
-          ".*\\.ir$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
-        "outbound": "direct"
-      },
-      {
-        "rule_set": [
-          "geoip-ir",
-          "geosite-ir"
-        ],
-        "outbound": "direct"
-      }
-    ],
     "rule_set": [
       {
         "type": "remote",
@@ -215,18 +103,16 @@
         "update_interval": "168h0m0s"
       }
     ],
-    "final": "Internet",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "saeed",
-      "store_fakeip": true,
-      "store_rdrc": true,
-      "rdrc_timeout": "168h0m0s"
-    }
+    "rules": [
+      {
+        "rule_set": ["geoip-ir"],
+        "outbound": "direct"
+      },
+      {
+        "rule_set": ["geosite-ir"],
+        "outbound": "direct"
+      }
+    ],
+    "final": "SELECT"
   }
 }
