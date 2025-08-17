@@ -95,20 +95,14 @@
   "route": {
     "rule_set": [
       {
-        "type": "remote",
+        "type": "local",
         "tag": "geoip-ir",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
-        "download_detour": "direct",
-        "update_interval": "168h0m0s"
+        "path": "/Users/YOUR_USERNAME/singbox-rules/geoip-ir.srs"
       },
       {
-        "type": "remote",
+        "type": "local",
         "tag": "geosite-ir",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
-        "download_detour": "direct",
-        "update_interval": "168h0m0s"
+        "path": "/Users/YOUR_USERNAME/singbox-rules/geosite-ir.srs"
       }
     ],
     "rules": [
