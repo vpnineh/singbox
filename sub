@@ -42,7 +42,7 @@
       "tag": "FI",
       "server": "drhystuichdfy.samanidempire.org",
       "server_port": 20335,
-      "auth": "80747420-96c4-4a2f-83e6-eea4e46beb09",
+      "password": "80747420-96c4-4a2f-83e6-eea4e46beb09",
       "tls": {
         "enabled": true,
         "server_name": "drhystuichdfy.samanidempire.org",
