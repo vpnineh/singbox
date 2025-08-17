@@ -93,7 +93,6 @@
     }
   ],
   "route": {
-    "domain_strategy": "prefer_ipv4",
     "rule_set": [
       {
         "type": "remote",
