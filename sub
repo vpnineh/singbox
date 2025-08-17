@@ -8,23 +8,14 @@
       {
         "tag": "dns-remote",
         "address": "1.1.1.1",
-        "address_strategy": "prefer_ipv4",
-        "detour": "SELECT"
+        "address_strategy": "prefer_ipv4"
       },
       {
         "tag": "dns-direct",
         "address": "8.8.8.8",
-        "address_strategy": "prefer_ipv4",
-        "detour": "direct"
+        "address_strategy": "prefer_ipv4"
       }
-    ],
-    "rules": [
-      {
-        "rule_set": ["geosite-ir"],
-        "server": "dns-direct"
-      }
-    ],
-    "strategy": "prefer_ipv4"
+    ]
   },
   "inbounds": [
     {
@@ -33,24 +24,25 @@
       "interface_name": "tun0",
       "inet4_address": "172.19.0.1/30",
       "auto_route": true,
-      "strict_route": true
+      "strict_route": true,
+      "sniff": true
     }
   ],
   "outbounds": [
     {
       "type": "shadowsocks",
       "tag": "TR",
-      "server": "103.215.218.73",
-      "server_port": 808,
       "method": "chacha20-ietf-poly1305",
-      "password": "tvX1v#NSFP_LG_bJ"
+      "password": "tvX1v#NSFP_LG_bJ",
+      "server": "103.215.218.73",
+      "server_port": 808
     },
     {
       "type": "hysteria2",
       "tag": "FI",
       "server": "drhystuichdfy.samanidempire.org",
       "server_port": 20335,
-      "password": "80747420-96c4-4a2f-83e6-eea4e46beb09",
+      "auth": "80747420-96c4-4a2f-83e6-eea4e46beb09",
       "tls": {
         "enabled": true,
         "server_name": "drhystuichdfy.samanidempire.org",
@@ -64,10 +56,10 @@
     {
       "type": "shadowsocks",
       "tag": "NL",
-      "server": "109.201.152.181",
-      "server_port": 443,
       "method": "aes-128-cfb",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "server": "109.201.152.181",
+      "server_port": 443
     },
     {
       "type": "urltest",
@@ -78,100 +70,26 @@
       "url": "https://www.gstatic.com/generate_204"
     },
     {
-      "type": "selector",
-      "tag": "SELECT",
-      "outbounds": ["PROXY", "TR", "FI", "NL", "direct", "block"],
-      "default": "PROXY"
-    },
-    {
       "type": "direct",
       "tag": "direct"
     },
     {
       "type": "block",
       "tag": "block"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
     }
   ],
   "route": {
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "geoip-ir",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
-        "download_detour": "direct",
-        "update_interval": "168h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-ir",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
-        "download_detour": "direct",
-        "update_interval": "168h0m0s"
-      }
-    ],
+    "auto_detect_interface": true,
     "rules": [
       {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
-      },
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "outbound": "block"
-      },
-      {
-        "protocol": "stun",
-        "outbound": "block"
-      },
-      {
-        "ip_cidr": [
-          "10.10.34.34",
-          "10.10.34.35",
-          "10.10.34.36"
-        ],
-        "outbound": "block"
-      },
-      {
-        "ip_is_private": true,
+        "geoip": ["ir"],
         "outbound": "direct"
       },
       {
-        "domain_regex": [
-          ".*\\.ir$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
-        "outbound": "direct"
-      },
-      {
-        "rule_set": [
-          "geoip-ir",
-          "geosite-ir"
-        ],
+        "geosite": ["ir"],
         "outbound": "direct"
       }
     ],
-    "final": "SELECT",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "saeed",
-      "store_fakeip": true,
-      "store_rdrc": true,
-      "rdrc_timeout": "168h0m0s"
-    }
+    "final": "PROXY"
   }
 }
