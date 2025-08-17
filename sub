@@ -1,9 +1,9 @@
 {
-  "log": {
-    "level": "info",
-    "timestamp": true
+"log": {
+    "disabled": true,
+    "level": "panic"
   },
-  "dns": {
+"dns": {
     "servers": [
       {
         "tag": "dns-remote",
